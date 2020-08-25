@@ -1,6 +1,6 @@
 # Simple Example
 
-This example illustrates how to use the `cloud-operations` module.
+This example illustrates how to use the `agent-policy` module.
 
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 ## Inputs
