@@ -26,18 +26,23 @@ platforms:
   - name: default
 
 suites:
-  - name: simple_example
+  - name: agent_policy_simple_example
     driver:
-      root_module_directory: test/fixtures/simple_example/
+      root_module_directory: test/fixtures/agent_policy_simple_example/
     verifier:
       color: false
       systems:
-        - name: simple_example local
+        - name: agent_policy_simple_example local
           backend: local
           controls:
             - gcloud
-            - gsutil
-        - name: simple_example gcp
-          backend: gcp
+  - name: agent_policy_detailed_example
+    driver:
+      root_module_directory: test/fixtures/agent_policy_detailed_example/
+    verifier:
+      color: false
+      systems:
+        - name: agent_policy_detailed_example local
+          backend: local
           controls:
-            - gcp
+            - gcloud

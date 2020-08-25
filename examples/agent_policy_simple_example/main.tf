@@ -14,12 +14,23 @@
  * limitations under the License.
  */
 
-variable "project_id" {
-  description = "The ID of the project in which to provision resources."
-  type        = string
+provider "google" {
+  version = "~> 2.0"
 }
 
-variable "bucket_name" {
-  description = "The name of the bucket to create."
-  type        = string
+module "agent_policy_simple" {
+  source     = "./../../modules/agent-policy"
+  project_id = "${var.project_id}"
+  policy_id  = "ops-agents-test-policy-simple"
+  agent_rules = [
+    {
+      type = "logging"
+    },
+  ]
+  os_types = [
+    {
+      short_name = "centos"
+      version    = "8"
+    },
+  ]
 }

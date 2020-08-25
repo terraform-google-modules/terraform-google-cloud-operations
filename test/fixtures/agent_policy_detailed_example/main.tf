@@ -1,5 +1,5 @@
 /**
- * Copyright 2018 Google LLC
+ * Copyright 2020 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,13 +14,8 @@
  * limitations under the License.
  */
 
-provider "google" {
-  version = "~> 2.0"
-}
+module "example" {
+  source = "../../../examples/agent_policy_detailed_example"
 
-module "cloud_operations" {
-  source = "../.."
-
-  project_id  = var.project_id
-  bucket_name = var.bucket_name
+  project_id = var.project_id
 }

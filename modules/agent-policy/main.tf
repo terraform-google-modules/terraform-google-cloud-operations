@@ -1,12 +1,28 @@
+/**
+ * Copyright 2020 Google LLC
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 module "gcloud" {
-  source  = "terraform-google-modules/gcloud/google"
+  source = "terraform-google-modules/gcloud/google"
 
-  platform = "linux"
-  additional_components = ["alpha", "beta"]
+  platform              = "linux"
+  additional_components = ["alpha"]
 
-  create_cmd_entrypoint = "${path.module}/scripts/create-update-script.sh"
-  create_cmd_body       = "${var.project_id} ${var.policy_id} ${jsonencode(var.description == null ? "" : var.description)} ${base64encode(jsonencode(var.agent_rules))} ${base64encode(jsonencode(var.group_labels == null ? [] : var.group_labels))} ${base64encode(jsonencode(var.os_types))} ${base64encode(jsonencode(var.zones == null ? [] : var.zones))} ${base64encode(jsonencode(var.instances == null ? [] : var.instances))}"
+  create_cmd_entrypoint = abspath("${path.module}/scripts/create-update-script.sh")
+  create_cmd_body       = "${var.project_id} ${jsonencode(var.policy_id)} ${jsonencode(var.description == null ? "" : var.description)} ${base64encode(jsonencode(var.agent_rules))} ${base64encode(jsonencode(var.group_labels == null ? [] : var.group_labels))} ${base64encode(jsonencode(var.os_types))} ${base64encode(jsonencode(var.zones == null ? [] : var.zones))} ${base64encode(jsonencode(var.instances == null ? [] : var.instances))}"
 
-  destroy_cmd_entrypoint = "gcloud"
-  destroy_cmd_body       = "alpha compute instances ops-agents policies delete ${var.policy_id} --project=${var.project_id}"
+  destroy_cmd_entrypoint = abspath("${path.module}/scripts/delete-script.sh")
+  destroy_cmd_body       = "${var.project_id} ${jsonencode(var.policy_id)}"
 }
