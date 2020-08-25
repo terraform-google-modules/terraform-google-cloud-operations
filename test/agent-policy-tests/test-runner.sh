@@ -19,8 +19,8 @@
 ## check update behavior
 ####################################################################
 
-PROJECT_ID=""
-POLICY_ID=""
+# PROJECT_ID=""
+# POLICY_ID=""
 
 # make sure the script is running from the right place
 SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
