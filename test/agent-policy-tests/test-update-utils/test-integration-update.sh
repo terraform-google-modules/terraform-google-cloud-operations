@@ -488,8 +488,10 @@ function teardown() {
     destroy_command="$(get_terraform_command "$DESTROY" "$DESCRIPTION" \
         "$AGENT_RULES" "$GROUP_LABELS" "$OS_TYPES" "$ZONES" "$INSTANCES")"
     destroy_output=$(eval "$destroy_command" 2>&1)
-    return_code="$?"
-    if [ "$return_code" -eq 0 ]; then
+    destroy_return_code="$?"
+    eval "$DESCRIBE_COMMAND" >/dev/null 2>&1
+    describe_return_code="$?"
+    if [ "$destroy_return_code" -eq 0 ] && [ "$describe_return_code" -eq 1 ]; then
         echo "=====   SUCCESS"
     else
         echo "=====   FAILED to destroy module"
