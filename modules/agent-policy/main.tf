@@ -21,7 +21,15 @@ module "gcloud" {
   additional_components = ["alpha"]
 
   create_cmd_entrypoint = abspath("${path.module}/scripts/create-update-script.sh")
-  create_cmd_body       = "${var.project_id} ${jsonencode(var.policy_id)} ${jsonencode(var.description == null ? "" : var.description)} ${base64encode(jsonencode(var.agent_rules))} ${base64encode(jsonencode(var.group_labels == null ? [] : var.group_labels))} ${base64encode(jsonencode(var.os_types))} ${base64encode(jsonencode(var.zones == null ? [] : var.zones))} ${base64encode(jsonencode(var.instances == null ? [] : var.instances))}"
+  create_cmd_body       = <<-EOT
+    ${var.project_id} ${jsonencode(var.policy_id)} \
+    ${jsonencode(var.description == null ? "" : var.description)} \
+    ${base64encode(jsonencode(var.agent_rules))} \
+    ${base64encode(jsonencode(var.group_labels == null ? [] : var.group_labels))} \
+    ${base64encode(jsonencode(var.os_types))} \
+    ${base64encode(jsonencode(var.zones == null ? [] : var.zones))} \
+    ${base64encode(jsonencode(var.instances == null ? [] : var.instances))}
+    EOT
 
   destroy_cmd_entrypoint = abspath("${path.module}/scripts/delete-script.sh")
   destroy_cmd_body       = "${var.project_id} ${jsonencode(var.policy_id)}"

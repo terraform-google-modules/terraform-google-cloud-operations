@@ -50,7 +50,6 @@ if [ "$RETURN_CODE" -eq 0 ]; then
     echo "$POLICY_ID exists, updating"
     ETAG="$(get_etag "$DESCRIBE_OUTPUT")"
     echo "etag: $ETAG"
-    # TODO: add etag to args
     UPDATE_COMMAND="$(get_update_command "$PROJECT_ID" "$POLICY_ID" \
         "$DESCRIPTION" "$AGENT_RULES_JSON" "$GROUP_LABELS_JSON" \
         "$OS_TYPES_JSON" "$ZONES_JSON" "$INSTANCES_JSON" "$ETAG")"
