@@ -20,7 +20,7 @@ provider "google" {
 
 module "agent_policy_detailed" {
   source      = "./../../modules/agent-policy"
-  project_id  = "${var.project_id}"
+  project_id  = var.project_id
   policy_id   = "ops-agents-test-policy-detailed"
   description = "an example policy description"
   agent_rules = [
