@@ -1,0 +1,31 @@
+name: update_example
+depends:
+  - name: inspec-gcp
+    git: https://github.com/inspec/inspec-gcp.git
+    tag: v0.10.0
+attributes:
+  - name: project_id
+    required: true
+    type: string
+  - name: description
+    required: false
+    type: string
+    default: "None"
+  - name: agent_rules
+    required: true
+    type: any
+  - name: group_labels
+    required: false
+    type: any
+    default: []
+  - name: os_types
+    required: true
+    type: any
+  - name: zones
+    required: false
+    type: any
+    default: []
+  - name: instances
+    required: false
+    type: any
+    default: []

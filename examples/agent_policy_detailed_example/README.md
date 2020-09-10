@@ -1,20 +1,13 @@
 # Simple Example
 
-This example illustrates how to use the `cloud-operations` module.
+This example illustrates how to use the `agent-policy` module.
 
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 ## Inputs
 
 | Name | Description | Type | Default | Required |
 |------|-------------|:----:|:-----:|:-----:|
-| bucket\_name | The name of the bucket to create. | string | n/a | yes |
 | project\_id | The ID of the project in which to provision resources. | string | n/a | yes |
-
-## Outputs
-
-| Name | Description |
-|------|-------------|
-| bucket\_name | The name of the bucket. |
 
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 

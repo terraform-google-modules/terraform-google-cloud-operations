@@ -14,12 +14,18 @@
  * limitations under the License.
  */
 
-variable "project_id" {
-  description = "The ID of the project in which to provision resources."
-  type        = string
+provider "google" {
+  version = "~> 2.0"
 }
 
-variable "bucket_name" {
-  description = "The name of the bucket to create."
-  type        = string
+module "agent_policy_update" {
+  source       = "./../../modules/agent-policy"
+  project_id   = var.project_id
+  policy_id    = "ops-agents-test-policy-update"
+  description  = var.description
+  agent_rules  = var.agent_rules
+  group_labels = var.group_labels
+  os_types     = var.os_types
+  zones        = var.zones
+  instances    = var.instances
 }

@@ -1,5 +1,5 @@
 /**
- * Copyright 2019 Google LLC
+ * Copyright 2020 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,22 +14,8 @@
  * limitations under the License.
  */
 
-module "project" {
-  source  = "terraform-google-modules/project-factory/google"
-  version = "~> 9.0"
+module "example" {
+  source = "../../../examples/agent_policy_simple_example"
 
-  name                 = "ci-cloud-operations"
-  random_project_id    = "true"
-  org_id               = var.org_id
-  folder_id            = var.folder_id
-  billing_account      = var.billing_account
-  skip_gcloud_download = true
-
-  activate_apis = [
-    "cloudresourcemanager.googleapis.com",
-    "serviceusage.googleapis.com",
-    "logging.googleapis.com",
-    "monitoring.googleapis.com",
-    "osconfig.googleapis.com"
-  ]
+  project_id = var.project_id
 }

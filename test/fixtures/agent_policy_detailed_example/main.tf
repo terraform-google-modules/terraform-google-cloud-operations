@@ -1,5 +1,5 @@
 /**
- * Copyright 2018 Google LLC
+ * Copyright 2020 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,6 +14,8 @@
  * limitations under the License.
  */
 
-output "bucket_name" {
-  value = google_storage_bucket.main.name
+module "example" {
+  source = "../../../examples/agent_policy_detailed_example"
+
+  project_id = var.project_id
 }
