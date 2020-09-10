@@ -1,5 +1,5 @@
 /**
- * Copyright 2018 Google LLC
+ * Copyright 2020 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,23 +14,14 @@
  * limitations under the License.
  */
 
-provider "google" {
-  version = "~> 2.0"
-}
+module "example" {
+  source = "../../../examples/agent_policy_update_example"
 
-module "agent_policy_simple" {
-  source     = "./../../modules/agent-policy"
-  project_id = var.project_id
-  policy_id  = "ops-agents-test-policy-simple"
-  agent_rules = [
-    {
-      type = "logging"
-    },
-  ]
-  os_types = [
-    {
-      short_name = "centos"
-      version    = "8"
-    },
-  ]
+  project_id   = var.project_id
+  description  = var.description
+  agent_rules  = var.agent_rules
+  group_labels = var.group_labels
+  os_types     = var.os_types
+  zones        = var.zones
+  instances    = var.instances
 }

@@ -29,6 +29,7 @@ suites:
   - name: agent_policy_simple_example
     driver:
       root_module_directory: test/fixtures/agent_policy_simple_example/
+      verify_version: false
     verifier:
       color: false
       systems:
@@ -39,10 +40,22 @@ suites:
   - name: agent_policy_detailed_example
     driver:
       root_module_directory: test/fixtures/agent_policy_detailed_example/
+      verify_version: false
     verifier:
       color: false
       systems:
         - name: agent_policy_detailed_example local
+          backend: local
+          controls:
+            - gcloud
+  - name: agent_policy_update_example
+    driver:
+      root_module_directory: test/fixtures/agent_policy_update_example/
+      verify_version: false
+    verifier:
+      color: false
+      systems:
+        - name: agent_policy_update_example local
           backend: local
           controls:
             - gcloud

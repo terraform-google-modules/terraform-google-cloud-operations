@@ -16,7 +16,7 @@
 
 module "project" {
   source  = "terraform-google-modules/project-factory/google"
-  version = "~> 8.0"
+  version = "~> 9.0"
 
   name                 = "ci-cloud-operations"
   random_project_id    = "true"

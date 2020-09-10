@@ -18,7 +18,7 @@
 # Make will use bash instead of sh
 SHELL := /usr/bin/env bash
 
-DOCKER_TAG_VERSION_DEVELOPER_TOOLS := 0.12.0
+DOCKER_TAG_VERSION_DEVELOPER_TOOLS := 0.13.7
 DOCKER_IMAGE_DEVELOPER_TOOLS := cft/developer-tools
 REGISTRY_URL := gcr.io/cloud-foundation-cicd
 
@@ -72,6 +72,23 @@ docker_test_lint:
 		-v "$(CURDIR)":/workspace \
 		$(REGISTRY_URL)/${DOCKER_IMAGE_DEVELOPER_TOOLS}:${DOCKER_TAG_VERSION_DEVELOPER_TOOLS} \
 		/usr/local/bin/test_lint.sh
+
+# Execute bats tests within the docker container
+.PHONY: docker_test_bats
+docker_test_bats:
+	docker run --rm -it \
+		-v $(CURDIR):/workspace \
+		$(REGISTRY_URL)/${DOCKER_IMAGE_DEVELOPER_TOOLS}:${DOCKER_TAG_VERSION_DEVELOPER_TOOLS} \
+		/bin/bash -c 'source /usr/local/bin/task_helper_functions.sh && test_bats'
+
+# Execute update integration tests within the docker container
+.PHONY: docker_test_integration_update
+docker_test_integration_update:
+	docker run --rm -it \
+		-e SERVICE_ACCOUNT_JSON \
+		-v "$(CURDIR)":/workspace \
+		$(REGISTRY_URL)/${DOCKER_IMAGE_DEVELOPER_TOOLS}:${DOCKER_TAG_VERSION_DEVELOPER_TOOLS} \
+		/bin/bash -c 'source /usr/local/bin/task_helper_functions.sh && test_integration_update'
 
 # Generate documentation
 .PHONY: docker_generate_docs

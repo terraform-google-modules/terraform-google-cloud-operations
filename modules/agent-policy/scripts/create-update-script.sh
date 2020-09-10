@@ -22,6 +22,8 @@
 ## during `terraform apply`
 ####################################################################
 
+set -x # debug mode
+
 PROJECT_ID="$1"
 POLICY_ID="$2"
 DESCRIPTION="$3"
@@ -33,7 +35,7 @@ INSTANCES_JSON="$(echo "$8" | base64 --decode)"
 
 
 # include functions to build gcloud command
-SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
+SCRIPT_DIR="$( realpath "$( dirname "${BASH_SOURCE[0]}" )" )"
 UTILS_ABS_PATH="${SCRIPT_DIR}/script-utils.sh"
 # shellcheck disable=SC1090
 source "$UTILS_ABS_PATH"

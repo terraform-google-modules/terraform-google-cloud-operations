@@ -14,22 +14,18 @@
  * limitations under the License.
  */
 
-####################################################################
-## Test module for the integration test that tests update behavior
-####################################################################
-
 provider "google" {
   version = "~> 2.0"
 }
 
-module "agent_policy_detailed" {
-  source       = "../../../modules/agent-policy"
-  project_id   = "${var.project_id}"
-  policy_id    = "${var.policy_id}"
-  description  = "${var.description}"
-  agent_rules  = "${var.agent_rules}"
-  group_labels = "${var.group_labels}"
-  os_types     = "${var.os_types}"
-  zones        = "${var.zones}"
-  instances    = "${var.instances}"
+module "agent_policy_update" {
+  source       = "./../../modules/agent-policy"
+  project_id   = var.project_id
+  policy_id    = "ops-agents-test-policy-update"
+  description  = var.description
+  agent_rules  = var.agent_rules
+  group_labels = var.group_labels
+  os_types     = var.os_types
+  zones        = var.zones
+  instances    = var.instances
 }

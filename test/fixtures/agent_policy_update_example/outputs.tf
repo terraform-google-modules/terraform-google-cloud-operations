@@ -14,53 +14,39 @@
  * limitations under the License.
  */
 
-####################################################################
-## Variables for the test module
-####################################################################
-
-variable "project_id" {
-  description = "The ID of the project in which to provision resources."
-  type        = string
+output "project_id" {
+  description = "The ID of the project in which resources are provisioned."
+  value       = var.project_id
 }
 
-variable "policy_id" {
-  description = "The ID of the policy."
-  type        = string
-}
-
-variable "description" {
+output "description" {
   description = "The description of the policy."
-  type        = string
-  default     = null
+  value       = var.description
 }
 
-variable "agent_rules" {
+output "agent_rules" {
   description = "A list of agent rules to be enforced by the policy."
-  type        = list(any)
+  value       = var.agent_rules
 }
 
-variable "group_labels" {
+output "group_labels" {
   description = "A list of label maps to filter instances to apply policies on."
-  type = list(list(object({
-    name  = string
-    value = string
-  })))
-  default = null
+  value       = var.group_labels
 }
 
-variable "os_types" {
+output "os_types" {
   description = "A list of label maps to filter instances to apply policies on."
-  type        = list(any)
+  value       = var.os_types
 }
 
-variable "zones" {
+output "zones" {
   description = "A list of zones to filter instances to apply the policy."
-  type        = list(string)
-  default     = null
+  value       = var.zones
+
 }
 
-variable "instances" {
+output "instances" {
   description = "A list of zones to filter instances to apply the policy."
-  type        = list(string)
-  default     = null
+  value       = var.instances
+
 }

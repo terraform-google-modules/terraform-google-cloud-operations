@@ -107,8 +107,6 @@ function get_flag() {
 #   An appropriate --clear-x flag (where x is instances, group-labels, or zones)
 #   if the flag value is empty, otherwise returns the appropriate flag
 function get_update_flag() {
-    # if the flag is empty
-    # we return the "clear group labels flag"
     local flag_name="$1"
     local flag_value="$2"
     local update_flag=""

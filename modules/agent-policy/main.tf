@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-module "gcloud" {
+module "gcloud-upsert" {
   source = "terraform-google-modules/gcloud/google"
 
   platform              = "linux"
@@ -30,6 +30,14 @@ module "gcloud" {
     ${base64encode(jsonencode(var.zones == null ? [] : var.zones))} \
     ${base64encode(jsonencode(var.instances == null ? [] : var.instances))}
     EOT
+  create_cmd_triggers   = { uuid = uuid() }
+}
+
+module "gcloud-destroy" {
+  source = "terraform-google-modules/gcloud/google"
+
+  platform              = "linux"
+  additional_components = ["alpha"]
 
   destroy_cmd_entrypoint = abspath("${path.module}/scripts/delete-script.sh")
   destroy_cmd_body       = "${var.project_id} ${jsonencode(var.policy_id)}"

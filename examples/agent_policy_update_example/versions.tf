@@ -14,23 +14,6 @@
  * limitations under the License.
  */
 
-provider "google" {
-  version = "~> 2.0"
-}
-
-module "agent_policy_simple" {
-  source     = "./../../modules/agent-policy"
-  project_id = var.project_id
-  policy_id  = "ops-agents-test-policy-simple"
-  agent_rules = [
-    {
-      type = "logging"
-    },
-  ]
-  os_types = [
-    {
-      short_name = "centos"
-      version    = "8"
-    },
-  ]
+terraform {
+  required_version = ">= 0.12"
 }

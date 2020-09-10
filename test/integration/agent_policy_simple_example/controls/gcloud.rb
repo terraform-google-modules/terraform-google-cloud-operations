@@ -22,4 +22,10 @@ control "gcloud" do
     its(:stdout) { should match "monitoring.googleapis.com" }
     its(:stdout) { should match "osconfig.googleapis.com" }
   end
+
+  describe command("gcloud alpha compute instances ops-agents policies describe " \
+    "ops-agents-test-policy-simple --project=#{attribute("project_id")} --quiet") do
+    its(:exit_status) { should eq 0 }
+    its(:stderr) { should eq "" }
+  end
 end

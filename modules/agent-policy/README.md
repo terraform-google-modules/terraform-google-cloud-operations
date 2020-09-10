@@ -65,9 +65,11 @@ Group labels are represented as a list of label maps to filter instances that th
 | name | The name of the label. | string | n/a | yes |
 | value | The value of the label. | string | n/a | yes |
 
+Each object in a nested list is related by `AND` and each nested list is related by `OR`. More details can be found in the [ops-agents policy docs][ops-agents-policy-docs].
+
 ### instances variable
 
-Each item in the list must be in the format of `zones/ZONE_NAME/instances/INSTANCE_NAME`. To list all existing instances, run `gcloud compute instances list`.
+Each item in the list must be in the format of `zones/ZONE_NAME/instances/INSTANCE_NAME`. To list all existing instances, run `gcloud compute instances list`. If this variable isn't provided, the variable will be set to its default value: `null`.
 
 ### os_types variable
 
@@ -147,3 +149,4 @@ information on contributing to this module.
 [curl]: https://curl.haxx.se
 [google-cloud-sdk]: https://cloud.google.com/sdk/install
 [os-config-metadata]: https://cloud.google.com/compute/docs/manage-os#enable-metadata
+[ops-agents-policy-docs]: https://cloud.google.com/sdk/gcloud/reference/alpha/compute/instances/ops-agents/policies/create
