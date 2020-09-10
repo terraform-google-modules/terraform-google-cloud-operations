@@ -252,7 +252,7 @@ setup() {
 ##############################################################
 
 @test "Test get_etag simple" {
-    local describe_output="etag: db5c5a61-6a05-4f67-8f84-c89a654eb576"
+    local describe_output='{"etag": "db5c5a61-6a05-4f67-8f84-c89a654eb576"}'
     local expected_etag="$ETAG"
     run get_etag "$describe_output"
 
@@ -260,22 +260,53 @@ setup() {
 }
 
 @test "Test get_etag detailed" {
-    local describe_output="agent_rules: - enable_autoupgrade:
-        true package_state: installed
-        type: logging
-        version: 1.*.*
-        assignment:
-        group_labels: []
-        instances: []
-        os_types:
-        - short_name: debian
-          version: '10'
-        zones: []
-        create_time: '2020-08-13T17:53:34.607Z'
-        description: None
-        etag: db5c5a61-6a05-4f67-8f84-c89a654eb576
-        id: projects/981664706940/guestPolicies/ops-agents-test-policy-simple
-        update_time: '2020-08-13T17:54:27.267Z'"
+    local describe_output='{
+  "agent_rules": [
+    {
+      "enable_autoupgrade": true,
+      "package_state": "installed",
+      "type": "logging",
+      "version": "1.*.*"
+    },
+    {
+      "enable_autoupgrade": false,
+      "package_state": "removed",
+      "type": "metrics",
+      "version": "latest"
+    }
+  ],
+  "assignment": {
+    "group_labels": [
+      {
+        "env": "prod",
+        "product": "myapp"
+      },
+      {
+        "env": "staging",
+        "product": "myapp"
+      }
+    ],
+    "instances": [
+      "zones/us-central1-a/instances/test-instance"
+    ],
+    "os_types": [
+      {
+        "short_name": "debian",
+        "version": "10"
+      }
+    ],
+    "zones": [
+      "us-central1-c",
+      "asia-northeast2-b",
+      "europe-north1-b"
+    ]
+  },
+  "create_time": "2020-09-10T15:45:13.398Z",
+  "description": "an example policy description ",
+  "etag": "db5c5a61-6a05-4f67-8f84-c89a654eb576",
+  "id": "projects/981664706940/guestPolicies/ops-agents-test-policy-demo",
+  "update_time": "2020-09-10T15:45:13.398Z"
+}'
     local expected_etag="$ETAG"
     run get_etag "$describe_output"
 

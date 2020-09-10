@@ -72,14 +72,16 @@ function get_formatted_list_of_list_of_objects() {
 }
 
 # Params:
-#   $1 = output of successful describe command
+#   $1 = output of successful describe command (json format)
 # Return:
 #   the etag in the given string
 function get_etag() {
     local describe_output="$1"
-    local etag=${describe_output#*etag: } # removes everything before etag
-    etag=${etag%id: *} # removes everything after etag
-    echo "$etag" | tr -d '\040\011\012\015' # removes spaces, tabs, carriage returns, newlines
+    local python="python -c 'import json, sys;"
+    python="$python json_dump = json.load(sys.stdin);"
+    python="$python print json_dump[\"etag\"]'"
+    formatted="$(echo "$1" | eval "$python")"
+    echo "$formatted"
 }
 
 

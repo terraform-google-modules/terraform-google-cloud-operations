@@ -36,7 +36,7 @@ control "gcloud" do
         {}
       end
     end
-    
+
 
     describe "description" do
       it "is equal to the description created by the module" do
