@@ -32,14 +32,12 @@ UTILS_ABS_PATH="${SCRIPT_DIR}/script-utils.sh"
 source "$UTILS_ABS_PATH"
 
 DESCRIBE_COMMAND="$(get_describe_command "$PROJECT_ID" "$POLICY_ID")"
-echo "$DESCRIBE_COMMAND"
 eval "$DESCRIBE_COMMAND"
 RETURN_CODE="$?"
 echo "return code of describe command: $RETURN_CODE"
 
 if [ "$RETURN_CODE" -eq 0 ]; then
     DELETE_COMMAND="$(get_delete_command "$PROJECT_ID" "$POLICY_ID")"
-    echo "$DELETE_COMMAND"
     eval "$DELETE_COMMAND"
     RETURN_CODE="$?"
     echo "return code of delete command: $RETURN_CODE"
