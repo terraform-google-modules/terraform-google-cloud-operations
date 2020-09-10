@@ -16,7 +16,10 @@
 
 locals {
   int_required_roles = [
-    "roles/owner"
+    "roles/owner",
+    "roles/osconfig.guestPolicyAdmin",
+    "roles/monitoring.metricWriter",
+    "roles/logging.logWriter"
   ]
 }
 
