@@ -70,7 +70,7 @@ function test_agent_rules() {
 }
 
 function test_group_labels_update() {
-    local group_labels=$'[[{\n "name" = "env" \n "value" = "prod" \n}]]'
+    local group_labels=$'[{\n env = "prod" \n}]'
     replace_between "group_labels" "os_types" "$group_labels"
     kitchen_do converge agent-policy-update-example-default
     kitchen_do verify agent-policy-update-example-default

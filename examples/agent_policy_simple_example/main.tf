@@ -24,8 +24,23 @@ module "agent_policy_simple" {
   policy_id  = "ops-agents-test-policy-simple"
   agent_rules = [
     {
-      type = "logging"
+      type               = "logging"
+      version            = "current-major"
+      package_state      = "installed"
+      enable_autoupgrade = true
     },
+    {
+      type               = "metrics"
+      version            = "current-major"
+      package_state      = "installed"
+      enable_autoupgrade = true
+    },
+  ]
+  group_labels = [
+    {
+      env = "prod"
+      app = "myproduct"
+    }
   ]
   os_types = [
     {

@@ -57,15 +57,15 @@ function get_formatted_list_of_objects() {
 
 
 # Params:
-#   $1 = JSON formatted list(list(objects))
+#   $1 = JSON formatted list(map)
 # Return:
 #   A well-formatted command line flag value for a list of list of objects
-function get_formatted_list_of_list_of_objects() {
+function get_formatted_list_of_map() {
     local formatted
     local python="python -c 'import json, sys;"
-    python="$python list_of_list_of_objs = json.load(sys.stdin);"
-    python="$python print (\";\".join(\",\".join(\"=\".join(inner_list[x] for x in inner_list)"
-    python="$python for inner_list in outer_list) for outer_list in list_of_list_of_objs))'"
+    python="$python list_of_objs = json.load(sys.stdin);"
+    python="$python print (\";\".join(\",\".join([\"{}={}\".format(k, v)"
+    python="$python for k, v in obj.items()]) for obj in list_of_objs))'"
     formatted="$(echo "$1" | eval "$python")"
     echo "$formatted"
 
@@ -198,7 +198,7 @@ function get_base_upsert_command() {
     local zones_flag_value
     local instances_flag_value
     agent_rules_flag_value=$(get_formatted_list_of_objects "$agent_rules_json")
-    group_labels_flag_value=$(get_formatted_list_of_list_of_objects "$group_labels_json")
+    group_labels_flag_value=$(get_formatted_list_of_map "$group_labels_json")
     os_types_flag_value=$(get_formatted_list_of_objects "$os_types_json")
     zones_flag_value=$(get_formatted_list_of_strings "$zones_json")
     instances_flag_value=$(get_formatted_list_of_strings "$instances_json")
