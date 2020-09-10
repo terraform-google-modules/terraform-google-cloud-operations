@@ -40,3 +40,11 @@ resource "google_project_iam_member" "int_test" {
 resource "google_service_account_key" "int_test" {
   service_account_id = google_service_account.int_test.id
 }
+
+resource "google_compute_project_metadata" "int_test" {
+  project = module.project.project_id
+  metadata = {
+    enable-guest-attributes = "TRUE"
+    enable-osconfig         = "TRUE"
+  }
+}
