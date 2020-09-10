@@ -73,7 +73,7 @@ Each agent rule in the list of agent rules contains the following fields:
 
 ### group_labels variable
 
-Group labels are represented as a list of label maps to filter instances that the policy applies to. Each entry in a label map is related by `AND` and each nested list is related by `OR`. More details can be found in the [ops-agents policy docs][ops-agents-policy-docs].
+Group labels are represented as a list of label maps to filter instances that the policy applies to. Each entry in a label map is related by `AND` and each label map is related by `OR`. More details can be found in the [ops-agents policy docs][ops-agents-policy-docs].
 
 ### instances variable
 

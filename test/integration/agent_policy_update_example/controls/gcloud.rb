@@ -58,14 +58,6 @@ control "gcloud" do
         if group_labels == []
           expect(data['assignment']['group_labels']).to eq group_labels
         else
-          # data['assignment']['group_labels'].zip(group_labels).each do \
-          #   |group_labels_actual, group_labels_expected|
-          #   group_labels_actual.zip(group_labels_expected).each do \
-          #     |group_label_actual, group_label_expected|
-          #     expect(group_label_actual[0]).to eq group_label_expected[:name]
-          #     expect(group_label_actual[1]).to eq group_label_expected[:value]
-          #   end
-          # end
           data['assignment']['group_labels'].zip(group_labels).each do \
             |group_labels_actual, group_labels_expected|
             group_labels_actual = group_labels_actual.transform_keys(&:to_sym)
