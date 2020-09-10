@@ -76,7 +76,6 @@ function get_formatted_list_of_list_of_objects() {
 # Return:
 #   the etag in the given string
 function get_etag() {
-    local describe_output="$1"
     local python="python -c 'import json, sys;"
     python="$python json_dump = json.load(sys.stdin);"
     python="$python print json_dump[\"etag\"]'"
