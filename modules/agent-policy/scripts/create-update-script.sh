@@ -42,7 +42,6 @@ source "$UTILS_ABS_PATH"
 
 
 DESCRIBE_COMMAND="$(get_describe_command "$PROJECT_ID" "$POLICY_ID")"
-echo "$DESCRIBE_COMMAND"
 DESCRIBE_OUTPUT=$(eval "$DESCRIBE_COMMAND" 2>/dev/null)
 RETURN_CODE="$?"
 echo "return code of describe command: $RETURN_CODE"
@@ -55,7 +54,6 @@ if [ "$RETURN_CODE" -eq 0 ]; then
     UPDATE_COMMAND="$(get_update_command "$PROJECT_ID" "$POLICY_ID" \
         "$DESCRIPTION" "$AGENT_RULES_JSON" "$GROUP_LABELS_JSON" \
         "$OS_TYPES_JSON" "$ZONES_JSON" "$INSTANCES_JSON" "$ETAG")"
-    echo "$UPDATE_COMMAND"
     eval "$UPDATE_COMMAND"
     RETURN_CODE="$?"
     echo "return code of update command: $RETURN_CODE"
@@ -64,7 +62,6 @@ else
     CREATE_COMMAND="$(get_create_command "$PROJECT_ID" "$POLICY_ID" \
         "$DESCRIPTION" "$AGENT_RULES_JSON" "$GROUP_LABELS_JSON" \
         "$OS_TYPES_JSON" "$ZONES_JSON" "$INSTANCES_JSON")"
-    echo "$CREATE_COMMAND"
     eval "$CREATE_COMMAND"
     RETURN_CODE="$?"
     echo "return code of create command: $RETURN_CODE"
