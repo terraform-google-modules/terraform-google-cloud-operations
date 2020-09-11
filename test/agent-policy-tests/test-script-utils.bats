@@ -115,10 +115,8 @@ setup() {
 @test "Tests get_create_command with group_labels" {
     local description=""
     local agent_rules_json="$AGENT_RULES_JSON_BASIC"
-    local group_labels_json="[[{\"name\":\"env\",\"value\":\"prod\"},"
-    group_labels_json="${group_labels_json}{\"name\":\"product\",\"value\":\"myapp\"}],"
-    group_labels_json="${group_labels_json}[{\"name\":\"env\",\"value\":\"staging\"},"
-    group_labels_json="${group_labels_json}{\"name\":\"product\",\"value\":\"myapp\"}]]"
+    local group_labels_json='[{"env":"prod","product":"myapp"},'
+    group_labels_json="$group_labels_json"'{"env":"staging","product":"myapp"}]'
     local os_types_json="$OS_TYPES_JSON_BASIC"
     local zones_json="$EMPTY_LIST_JSON"
     local instances_json="$EMPTY_LIST_JSON"
@@ -126,8 +124,8 @@ setup() {
     local expected_command="gcloud alpha compute instances ops-agents"
     expected_command="$expected_command policies create ops-agents-test-policy"
     expected_command="$expected_command --agent-rules='type=metrics'"
-    expected_command="$expected_command --group-labels='env=prod,product=myapp;"
-    expected_command="${expected_command}env=staging,product=myapp'"
+    expected_command="$expected_command --group-labels='product=myapp,env=prod;"
+    expected_command="${expected_command}product=myapp,env=staging'"
     expected_command="$expected_command --os-types='version=8,short-name=centos'"
     expected_command="$expected_command --project='test-project-id' --quiet"
 

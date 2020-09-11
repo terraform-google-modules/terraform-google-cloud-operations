@@ -70,7 +70,7 @@ function test_agent_rules() {
 }
 
 function test_group_labels_update() {
-    local group_labels=$'[[{\n "name" = "env" \n "value" = "prod" \n}]]'
+    local group_labels=$'[{\n env = "prod" \n}]'
     replace_between "group_labels" "os_types" "$group_labels"
     kitchen_do converge agent-policy-update-example-default
     kitchen_do verify agent-policy-update-example-default
@@ -130,6 +130,7 @@ function test_description() {
 
 function run_integration_update_tests() {
     source_test_env
+    init_credentials
 
     kitchen_do create agent-policy-update-example-default
     test_original_state
@@ -144,6 +145,4 @@ function run_integration_update_tests() {
     restore_original_config
 }
 
-setup_trap_handler_integration
-init_credentials
 run_integration_update_tests

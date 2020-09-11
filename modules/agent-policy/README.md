@@ -13,8 +13,23 @@ module "agent_policy" {
   policy_id  = "ops-agents-example-policy"
   agent_rules = [
     {
-      type = "logging"
+      type               = "logging"
+      version            = "current-major"
+      package_state      = "installed"
+      enable_autoupgrade = true
     },
+    {
+      type               = "metrics"
+      version            = "current-major"
+      package_state      = "installed"
+      enable_autoupgrade = true
+    },
+  ]
+  group_labels = [
+    {
+      env = "prod"
+      app = "myproduct"
+    }
   ]
   os_types = [
     {
@@ -34,7 +49,7 @@ Functional examples are included in the [examples](./../../examples) directory.
 |------|-------------|:----:|:-----:|:-----:|
 | agent\_rules | A list of agent rules to be enforced by the policy. | list(any) | n/a | yes |
 | description | The description of the policy. | string | `"null"` | no |
-| group\_labels | A list of label maps to filter instances to apply policies on. | object | `"null"` | no |
+| group\_labels | A list of label maps to filter instances to apply policies on. | list(map(string)) | `"null"` | no |
 | instances | A list of instances to filter instances to apply the policy. | list(string) | `"null"` | no |
 | os\_types | A list of OS types to filter instances to apply the policy. | list(any) | n/a | yes |
 | policy\_id | The ID of the policy. | string | n/a | yes |
@@ -58,14 +73,7 @@ Each agent rule in the list of agent rules contains the following fields:
 
 ### group_labels variable
 
-Group labels are represented as a list of label maps to filter instances that the policy applies to. Each label map is represented by a list of objects, and each object contains the following fields:
-
-| Name | Description | Type | Default | Required |
-|------|-------------|:----:|:-----:|:-----:|
-| name | The name of the label. | string | n/a | yes |
-| value | The value of the label. | string | n/a | yes |
-
-Each object in a nested list is related by `AND` and each nested list is related by `OR`. More details can be found in the [ops-agents policy docs][ops-agents-policy-docs].
+Group labels are represented as a list of label maps to filter instances that the policy applies to. Each entry in a label map is related by `AND` and each label map is related by `OR`. More details can be found in the [ops-agents policy docs][ops-agents-policy-docs].
 
 ### instances variable
 
@@ -127,15 +135,21 @@ provision a project with the necessary APIs enabled.
 
 ## Testing
 
-
-
 ### Integration Testing
 
-Instructions for how to run integration tests can be found in [CONTRIBUTING.md](./../../CONTRIBUTING.md#integration-testing)
+Instructions for how to run integration tests can be found in [CONTRIBUTING.md](./../../CONTRIBUTING.md#integration-testing).
+To run integration tests that test update functionality, set up your environment according to [these instructions](./../../CONTRIBUTING.md#test-environment). Next, in the root directory of the repo, run:
+```
+make docker_test_integration_update
+```
 
 ### Unit Testing
 
-To run unit tests, navigate to [test/agent-policy-tests](./../../test/agent-policy-tests), then run `./test-runner.py`.
+To run unit tests, set up your environment according to [these instructions](./../../CONTRIBUTING.md#test-environment). Next, in the root directory of the repo, run:
+```
+make docker_test_bats
+```
+
 
 ## Contributing
 

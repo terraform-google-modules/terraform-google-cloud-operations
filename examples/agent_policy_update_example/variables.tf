@@ -32,11 +32,8 @@ variable "agent_rules" {
 
 variable "group_labels" {
   description = "A list of label maps to filter instances to apply policies on."
-  type = list(list(object({
-    name  = string
-    value = string
-  })))
-  default = null
+  type        = list(map(string))
+  default     = null
 }
 
 variable "os_types" {

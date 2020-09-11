@@ -32,32 +32,20 @@ module "agent_policy_detailed" {
     },
     {
       type               = "metrics"
-      version            = "latest"
-      package_state      = "removed"
-      enable_autoupgrade = false
+      version            = "current-major"
+      package_state      = "installed"
+      enable_autoupgrade = true
     },
   ]
   group_labels = [
-    [
-      {
-        name  = "env"
-        value = "prod"
-      },
-      {
-        name  = "product"
-        value = "myapp"
-      },
-    ],
-    [
-      {
-        name  = "env"
-        value = "staging"
-      },
-      {
-        name  = "product"
-        value = "myapp"
-      },
-    ],
+    {
+      env     = "prod"
+      product = "myapp"
+    },
+    {
+      env     = "staging"
+      product = "myapp"
+    }
   ]
   os_types = [
     {
