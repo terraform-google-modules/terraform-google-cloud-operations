@@ -130,6 +130,7 @@ function test_description() {
 
 function run_integration_update_tests() {
     source_test_env
+    init_credentials
 
     kitchen_do create agent-policy-update-example-default
     test_original_state
@@ -144,6 +145,6 @@ function run_integration_update_tests() {
     restore_original_config
 }
 
-setup_trap_handler_integration
-init_credentials
+# setup_trap_handler_integration
+# init_credentials
 run_integration_update_tests
