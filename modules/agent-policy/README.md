@@ -8,7 +8,9 @@ Basic usage of this module is as follows:
 
 ```hcl
 module "agent_policy" {
-  source     = "terraform-google-modules/cloud-operations/google/modules/agent-policy"
+  source     = "terraform-google-modules/cloud-operations/google//modules/agent-policy"
+  version    = "~> 0.1.0"
+
   project_id = "<PROJECT ID>"
   policy_id  = "ops-agents-example-policy"
   agent_rules = [
