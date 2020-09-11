@@ -145,6 +145,4 @@ function run_integration_update_tests() {
     restore_original_config
 }
 
-# setup_trap_handler_integration
-# init_credentials
 run_integration_update_tests

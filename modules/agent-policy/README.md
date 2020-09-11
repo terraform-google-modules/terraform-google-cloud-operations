@@ -135,15 +135,21 @@ provision a project with the necessary APIs enabled.
 
 ## Testing
 
-
-
 ### Integration Testing
 
-Instructions for how to run integration tests can be found in [CONTRIBUTING.md](./../../CONTRIBUTING.md#integration-testing)
+Instructions for how to run integration tests can be found in [CONTRIBUTING.md](./../../CONTRIBUTING.md#integration-testing). 
+To run integration tests that test update functionality, set up your environment according to [these instructions](./../../CONTRIBUTING.md#test-environment). Next, in the root directory of the repo, run:
+```
+make docker_test_integration_update
+```
 
 ### Unit Testing
 
-To run unit tests, navigate to [test/agent-policy-tests](./../../test/agent-policy-tests), then run `./test-runner.py`.
+To run unit tests, set up your environment according to [these instructions](./../../CONTRIBUTING.md#test-environment). Next, in the root directory of the repo, run:
+```
+make docker_test_bats
+```
+
 
 ## Contributing
 
