@@ -137,7 +137,7 @@ provision a project with the necessary APIs enabled.
 
 ### Integration Testing
 
-Instructions for how to run integration tests can be found in [CONTRIBUTING.md](./../../CONTRIBUTING.md#integration-testing). 
+Instructions for how to run integration tests can be found in [CONTRIBUTING.md](./../../CONTRIBUTING.md#integration-testing).
 To run integration tests that test update functionality, set up your environment according to [these instructions](./../../CONTRIBUTING.md#test-environment). Next, in the root directory of the repo, run:
 ```
 make docker_test_integration_update
