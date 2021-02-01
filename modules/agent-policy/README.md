@@ -165,4 +165,4 @@ information on contributing to this module.
 [curl]: https://curl.haxx.se
 [google-cloud-sdk]: https://cloud.google.com/sdk/install
 [os-config-metadata]: https://cloud.google.com/compute/docs/manage-os#enable-metadata
-[ops-agents-policy-docs]: https://cloud.google.com/sdk/gcloud/reference/alpha/compute/instances/ops-agents/policies/create
+[ops-agents-policy-docs]: https://cloud.google.com/sdk/gcloud/reference/beta/compute/instances/ops-agents/policies/create
