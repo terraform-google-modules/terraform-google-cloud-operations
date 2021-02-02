@@ -48,15 +48,19 @@ Functional examples are included in the [examples](./../../examples) directory.
 ## Inputs
 
 | Name | Description | Type | Default | Required |
-|------|-------------|:----:|:-----:|:-----:|
-| agent\_rules | A list of agent rules to be enforced by the policy. | list(any) | n/a | yes |
-| description | The description of the policy. | string | `"null"` | no |
-| group\_labels | A list of label maps to filter instances to apply policies on. | list(map(string)) | `"null"` | no |
-| instances | A list of instances to filter instances to apply the policy. | list(string) | `"null"` | no |
-| os\_types | A list of OS types to filter instances to apply the policy. | list(any) | n/a | yes |
-| policy\_id | The ID of the policy. | string | n/a | yes |
-| project\_id | The ID of the project in which to provision resources. | string | n/a | yes |
-| zones | A list of zones to filter instances to apply the policy. | list(string) | `"null"` | no |
+|------|-------------|------|---------|:--------:|
+| agent\_rules | A list of agent rules to be enforced by the policy. | `list(any)` | n/a | yes |
+| description | The description of the policy. | `string` | `null` | no |
+| group\_labels | A list of label maps to filter instances to apply policies on. | `list(map(string))` | `null` | no |
+| instances | A list of instances to filter instances to apply the policy. | `list(string)` | `null` | no |
+| os\_types | A list of OS types to filter instances to apply the policy. | `list(any)` | n/a | yes |
+| policy\_id | The ID of the policy. | `string` | n/a | yes |
+| project\_id | The ID of the project in which to provision resources. | `string` | n/a | yes |
+| zones | A list of zones to filter instances to apply the policy. | `list(string)` | `null` | no |
+
+## Outputs
+
+No output.
 
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 
