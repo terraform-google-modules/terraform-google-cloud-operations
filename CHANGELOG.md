@@ -8,6 +8,13 @@ and this project adheres to
 [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 This changelog is generated automatically based on [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/).
 
+## [0.2.0](https://www.github.com/terraform-google-modules/terraform-google-cloud-operations/compare/v0.1.1...v0.2.0) (2021-02-03)
+
+
+### Features
+
+* Promote alpha to beta ([#11](https://www.github.com/terraform-google-modules/terraform-google-cloud-operations/issues/11)) ([478e152](https://www.github.com/terraform-google-modules/terraform-google-cloud-operations/commit/478e152aaa91be105e5df227f4cab7a6461c7ec5))
+
 ### [0.1.1](https://www.github.com/terraform-google-modules/terraform-google-cloud-operations/compare/v0.1.0...v0.1.1) (2020-10-07)
 
 
