@@ -23,7 +23,7 @@
 
 CREATE="create"
 UPDATE="update"
-LAUNCH_STAGE="alpha"
+LAUNCH_STAGE="beta"
 
 
 # Params:

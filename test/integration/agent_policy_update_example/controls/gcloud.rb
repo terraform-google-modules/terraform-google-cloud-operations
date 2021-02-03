@@ -23,7 +23,7 @@ instances = attribute('instances')
 control "gcloud" do
   title "gcloud"
 
-  describe command("gcloud alpha compute instances ops-agents policies describe " \
+  describe command("gcloud beta compute instances ops-agents policies describe " \
     "ops-agents-test-policy-update --project=#{attribute("project_id")} " \
     "--quiet --format=json") do
     its(:exit_status) { should eq 0 }

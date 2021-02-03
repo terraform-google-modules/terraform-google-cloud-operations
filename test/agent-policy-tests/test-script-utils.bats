@@ -52,7 +52,7 @@ setup() {
     local zones_json="$EMPTY_LIST_JSON"
     local instances_json="$EMPTY_LIST_JSON"
 
-    local expected_command="gcloud alpha compute instances ops-agents"
+    local expected_command="gcloud beta compute instances ops-agents"
     expected_command="$expected_command policies create ops-agents-test-policy"
     expected_command="$expected_command --agent-rules='type=metrics'"
     expected_command="$expected_command --os-types='version=8,short-name=centos'"
@@ -73,7 +73,7 @@ setup() {
     local zones_json="$EMPTY_LIST_JSON"
     local instances_json="$EMPTY_LIST_JSON"
 
-    local expected_command="gcloud alpha compute instances ops-agents"
+    local expected_command="gcloud beta compute instances ops-agents"
     expected_command="$expected_command policies create ops-agents-test-policy"
     expected_command="$expected_command --description='an example test policy'"
     expected_command="$expected_command --agent-rules='type=metrics'"
@@ -97,7 +97,7 @@ setup() {
     local zones_json="$EMPTY_LIST_JSON"
     local instances_json="$EMPTY_LIST_JSON"
 
-    local expected_command="gcloud alpha compute instances ops-agents"
+    local expected_command="gcloud beta compute instances ops-agents"
     expected_command="$expected_command policies create ops-agents-test-policy"
     expected_command="$expected_command --agent-rules='version=current-major,"
     expected_command="${expected_command}type=logging,enable-autoupgrade=true,"
@@ -121,7 +121,7 @@ setup() {
     local zones_json="$EMPTY_LIST_JSON"
     local instances_json="$EMPTY_LIST_JSON"
 
-    local expected_command="gcloud alpha compute instances ops-agents"
+    local expected_command="gcloud beta compute instances ops-agents"
     expected_command="$expected_command policies create ops-agents-test-policy"
     expected_command="$expected_command --agent-rules='type=metrics'"
     expected_command="$expected_command --group-labels='product=myapp,env=prod;"
@@ -144,7 +144,7 @@ setup() {
     local zones_json="[\"us-central1-c\",\"asia-northeast2-b\",\"europe-north1-b\"]"
     local instances_json="$EMPTY_LIST_JSON"
 
-    local expected_command="gcloud alpha compute instances ops-agents"
+    local expected_command="gcloud beta compute instances ops-agents"
     expected_command="$expected_command policies create ops-agents-test-policy"
     expected_command="$expected_command --agent-rules='type=metrics'"
     expected_command="$expected_command --os-types='version=8,short-name=centos'"
@@ -167,7 +167,7 @@ setup() {
     local zones_json="$EMPTY_LIST_JSON"
     local instances_json="[\"zones/us-central1-a/instances/test-instance\"]"
 
-    local expected_command="gcloud alpha compute instances ops-agents"
+    local expected_command="gcloud beta compute instances ops-agents"
     expected_command="$expected_command policies create ops-agents-test-policy"
     expected_command="$expected_command --agent-rules='type=metrics'"
     expected_command="$expected_command --os-types='version=8,short-name=centos'"
@@ -196,7 +196,7 @@ setup() {
     local zones_json="$EMPTY_LIST_JSON"
     local instances_json="$EMPTY_LIST_JSON"
 
-    local expected_command="gcloud alpha compute instances ops-agents"
+    local expected_command="gcloud beta compute instances ops-agents"
     expected_command="$expected_command policies update ops-agents-test-policy"
     expected_command="$expected_command --agent-rules='type=metrics'"
     expected_command="$expected_command --os-types='version=8,short-name=centos'"
@@ -220,7 +220,7 @@ setup() {
 ##############################################################
 
 @test "Test get_describe_command" {
-    local expected_command="gcloud alpha compute instances ops-agents"
+    local expected_command="gcloud beta compute instances ops-agents"
     expected_command="$expected_command policies describe ops-agents-test-policy"
     expected_command="$expected_command --project='test-project-id' --quiet"
 
@@ -235,7 +235,7 @@ setup() {
 ##############################################################
 
 @test "Test get_delete_command" {
-    local expected_command="gcloud alpha compute instances ops-agents"
+    local expected_command="gcloud beta compute instances ops-agents"
     expected_command="$expected_command policies delete ops-agents-test-policy"
     expected_command="$expected_command --project='test-project-id' --quiet"
 

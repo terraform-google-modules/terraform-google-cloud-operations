@@ -45,4 +45,4 @@ tags:
 - 'bats'
 substitutions:
   _DOCKER_IMAGE_DEVELOPER_TOOLS: 'cft/developer-tools'
-  _DOCKER_TAG_VERSION_DEVELOPER_TOOLS: '0.13.7'
+  _DOCKER_TAG_VERSION_DEVELOPER_TOOLS: '0.14.9'
