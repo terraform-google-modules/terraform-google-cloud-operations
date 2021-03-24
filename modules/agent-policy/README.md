@@ -6,6 +6,45 @@ This module is used to install and manage metrics and logging agents in GCE.
 
 Basic usage of this module is as follows:
 
+To know more about ops-agent type, See: https://cloud.google.com/stackdriver/docs/solutions/ops-agent
+```hcl
+module "agent_policy" {
+  source     = "terraform-google-modules/cloud-operations/google//modules/agent-policy"
+  version    = "~> 0.1.0"
+
+  project_id = "<PROJECT ID>"
+  policy_id  = "ops-agents-example-policy"
+  agent_rules = [
+    {
+      type               = "logging"
+      version            = "current-major"
+      package_state      = "installed"
+      enable_autoupgrade = true
+    },
+    {
+      type               = "metrics"
+      version            = "current-major"
+      package_state      = "installed"
+      enable_autoupgrade = true
+    },
+  ]
+  group_labels = [
+    {
+      env = "prod"
+      app = "myproduct"
+    }
+  ]
+  os_types = [
+    {
+      short_name = "centos"
+      version    = "8"
+    },
+  ]
+}
+```
+
+To know more about logging or metrics type, See:
+https://cloud.google.com/logging/docs/agent and https://cloud.google.com/monitoring/agent
 ```hcl
 module "agent_policy" {
   source     = "terraform-google-modules/cloud-operations/google//modules/agent-policy"
