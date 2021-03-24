@@ -16,13 +16,7 @@ module "agent_policy" {
   policy_id  = "ops-agents-example-policy"
   agent_rules = [
     {
-      type               = "logging"
-      version            = "current-major"
-      package_state      = "installed"
-      enable_autoupgrade = true
-    },
-    {
-      type               = "metrics"
+      type               = "ops-agent"
       version            = "current-major"
       package_state      = "installed"
       enable_autoupgrade = true
@@ -43,8 +37,7 @@ module "agent_policy" {
 }
 ```
 
-To know more about logging or metrics type, See:
-https://cloud.google.com/logging/docs/agent and https://cloud.google.com/monitoring/agent
+To know more about logging or metrics type, See: https://cloud.google.com/logging/docs/agent and https://cloud.google.com/monitoring/agent
 ```hcl
 module "agent_policy" {
   source     = "terraform-google-modules/cloud-operations/google//modules/agent-policy"
