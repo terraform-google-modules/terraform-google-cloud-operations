@@ -72,7 +72,7 @@ Each agent rule in the list of agent rules contains the following fields:
 
 | Name | Description | Type | Default | Required |
 |------|-------------|:----:|:-----:|:-----:|
-| type | Type of agent to manage. Allowed values: `"logging"`, `"metrics"`. | string | n/a | yes |
+| type | Type of agent to manage. Allowed values: `"logging"`, `"metrics"`, `"ops-agent"`. | string | n/a | yes |
 | version | Version of the agent to install. Allowed values and formats: `"current-major"`, `"latest"`, `"MAJOR_VERSION.*.*"`, `"MAJOR_VERSION.MINOR_VERSION.PATCH_VERSION"`, `"5.5.2-BUILD_NUMBER"`. `"5.5.2-BUILD_NUMBER"` is only allowed if `type="metrics"`. | string | `"current-major"` | no |
 | package\_state | Desired package state of the agent. Allowed values: `"installed"`, `"removed"`. | object | `"installed"` | no |
 | enable\_autoupgrade | Whether to enable autoupgrade of the agent. Allowed values: `true`, `false`. | list(string) | `true` | no |
