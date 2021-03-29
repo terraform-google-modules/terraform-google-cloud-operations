@@ -6,6 +6,38 @@ This module is used to install and manage metrics and logging agents in GCE.
 
 Basic usage of this module is as follows:
 
+Sample module to install [Logging Agent](https://cloud.google.com/logging/docs/agent) and [Metrics Agent](https://cloud.google.com/monitoring/agent) on all CentOS 8 VMs with two labels "env=prod" and "app=myproduct".
+```hcl
+module "agent_policy" {
+  source     = "terraform-google-modules/cloud-operations/google//modules/agent-policy"
+  version    = "~> 0.1.0"
+
+  project_id = "<PROJECT ID>"
+  policy_id  = "ops-agents-example-policy"
+  agent_rules = [
+    {
+      type               = "ops-agent"
+      version            = "current-major"
+      package_state      = "installed"
+      enable_autoupgrade = true
+    },
+  ]
+  group_labels = [
+    {
+      env = "prod"
+      app = "myproduct"
+    }
+  ]
+  os_types = [
+    {
+      short_name = "centos"
+      version    = "8"
+    },
+  ]
+}
+```
+
+Sample module to install [Ops Agent](https://cloud.google.com/stackdriver/docs/solutions/ops-agent) on all CentOS 8 VMs with two labels "env=prod" and "app=myproduct".
 ```hcl
 module "agent_policy" {
   source     = "terraform-google-modules/cloud-operations/google//modules/agent-policy"
@@ -72,7 +104,7 @@ Each agent rule in the list of agent rules contains the following fields:
 
 | Name | Description | Type | Default | Required |
 |------|-------------|:----:|:-----:|:-----:|
-| type | Type of agent to manage. Allowed values: `"logging"`, `"metrics"`. | string | n/a | yes |
+| type | Type of agent to manage. Allowed values: `"logging"`, `"metrics"`, `"ops-agent"`. | string | n/a | yes |
 | version | Version of the agent to install. Allowed values and formats: `"current-major"`, `"latest"`, `"MAJOR_VERSION.*.*"`, `"MAJOR_VERSION.MINOR_VERSION.PATCH_VERSION"`, `"5.5.2-BUILD_NUMBER"`. `"5.5.2-BUILD_NUMBER"` is only allowed if `type="metrics"`. | string | `"current-major"` | no |
 | package\_state | Desired package state of the agent. Allowed values: `"installed"`, `"removed"`. | object | `"installed"` | no |
 | enable\_autoupgrade | Whether to enable autoupgrade of the agent. Allowed values: `true`, `false`. | list(string) | `true` | no |
