@@ -6,7 +6,7 @@ This module is used to install and manage metrics and logging agents in GCE.
 
 Basic usage of this module is as follows:
 
-Sample module to install [Logging Agent](https://cloud.google.com/logging/docs/agent) and [Metrics Agent](https://cloud.google.com/monitoring/agent) on all CentOS 8 VMs with two labels "env=prod" and "app=myproduct".
+Sample module to install [Ops Agent](https://cloud.google.com/stackdriver/docs/solutions/ops-agent) on all CentOS 8 VMs with two labels "env=prod" and "app=myproduct".
 ```hcl
 module "agent_policy" {
   source     = "terraform-google-modules/cloud-operations/google//modules/agent-policy"
@@ -37,7 +37,7 @@ module "agent_policy" {
 }
 ```
 
-Sample module to install [Ops Agent](https://cloud.google.com/stackdriver/docs/solutions/ops-agent) on all CentOS 8 VMs with two labels "env=prod" and "app=myproduct".
+Sample module to install [Logging Agent](https://cloud.google.com/logging/docs/agent) and [Metrics Agent](https://cloud.google.com/monitoring/agent) on all CentOS 8 VMs with two labels "env=prod" and "app=myproduct".
 ```hcl
 module "agent_policy" {
   source     = "terraform-google-modules/cloud-operations/google//modules/agent-policy"
