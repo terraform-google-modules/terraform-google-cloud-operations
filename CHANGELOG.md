@@ -8,6 +8,14 @@ and this project adheres to
 [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 This changelog is generated automatically based on [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/).
 
+### [0.2.1](https://www.github.com/terraform-google-modules/terraform-google-cloud-operations/compare/v0.2.0...v0.2.1) (2021-03-30)
+
+
+### Bug Fixes
+
+* Fixing the swapped descriptiion ([#18](https://www.github.com/terraform-google-modules/terraform-google-cloud-operations/issues/18)) ([4ea8c76](https://www.github.com/terraform-google-modules/terraform-google-cloud-operations/commit/4ea8c768f95bcd052cb7cbf8ef820a3339565767))
+* Update documentation to support ops-agent as a new agent type ([#16](https://www.github.com/terraform-google-modules/terraform-google-cloud-operations/issues/16)) ([bbdce0d](https://www.github.com/terraform-google-modules/terraform-google-cloud-operations/commit/bbdce0d6e76d1054098b8862e98eccf08db254e5))
+
 ## [0.2.0](https://www.github.com/terraform-google-modules/terraform-google-cloud-operations/compare/v0.1.1...v0.2.0) (2021-02-03)
 
 
