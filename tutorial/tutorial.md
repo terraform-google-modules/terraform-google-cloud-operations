@@ -22,18 +22,19 @@ If needed, login to your gcp account within cloudshell, this ensures you're able
 gcloud auth login
 ```
 
-Set a project you'll be deploying VMs in:  
-<walkthrough-project-setup billing="true"></walkthrough-project-setup>
-
-Then enable the compute engine api for this project if it's not already enabled:  
-<walkthrough-enable-apis apis="compute.googleapis.com"></walkthrough-enable-apis>
-
-
-Lastly, set your configuration for whichever project you selected above:  
+Next, set a project you'll be deploying VMs in. To see available projects:   
+```bash
+gcloud projects list
+```
+And then set your configuration for whichever project you prefer:  
 ```bash
 gcloud config set project PROJECT_ID
 ```
 
+Lastly, enable the compute engine API if it's not already enabled:
+```bash
+gcloud services enable compute.googleapis.com
+```
 
 ## Service Account Setup 
 Next you'll need to create a service account and credentials file. These resources allow Terraform to create the VM. 
@@ -44,10 +45,17 @@ For this example we'll name the service account and display it as 'terraform' bu
 ```bash
 gcloud iam service-accounts create terraform --description="Service account for VM provisioning with Terraform" --display-name="terraform"
 ```
-2. Create the iam policy binding and attach the necessary role to the account:
+2. Create the iam policy bindings and attach the necessary role to the account:
 ```bash 
-gcloud projects add-iam-policy-binding $GOOGLE_CLOUD_PROJECT --member="serviceAccount:terraform@$GOOGLE_CLOUD_PROJECT.iam.gserviceaccount.com" --role="roles/compute.admin" --role"roles/osconfig.guestPolicyAdmin"
+gcloud projects add-iam-policy-binding $GOOGLE_CLOUD_PROJECT --member="serviceAccount:terraform@$GOOGLE_CLOUD_PROJECT.iam.gserviceaccount.com" --role="roles/compute.admin" 
 ```
+```bash 
+gcloud projects add-iam-policy-binding $GOOGLE_CLOUD_PROJECT --member="serviceAccount:terraform@$GOOGLE_CLOUD_PROJECT.iam.gserviceaccount.com" --role="roles/osconfig.guestPolicyAdmin" 
+```
+```bash
+gcloud projects add-iam-policy-binding $GOOGLE_CLOUD_PROJECT --member="serviceAccount:terraform@$GOOGLE_CLOUD_PROJECT.iam.gserviceaccount.com" --role="iam.serviceAccountUser"
+```
+
 3. Create the key-file associated with the service account:
 ```bash
 gcloud iam service-accounts keys create test-key.json --iam-account=terraform@$GOOGLE_CLOUD_PROJECT.iam.gserviceaccount.com
@@ -66,7 +74,7 @@ user@cloudshell:~/terraform $ tree
 `-- variables.tf
 ```
 
-You'll make changes in the `terraform.tfvars` file. At a minimum you need to specify values for the following:  
+You'll make changes in the `terraform.tfvars` file. At a minimum you need to specify values for the following inside of double quotes (""):  
 ```bash
 gcp_project =
 service_account_email = 
@@ -78,7 +86,7 @@ echo $GOOGLE_CLOUD_PROJECT
 And for `service_acount_email` we'll use the default compute service account for this project. The default service account email is structured like: `PROJECT_ID_NUM-compute@developer.gserviceaccount.com`
 If you're unsure of your project number, you can capture it with the following command in CloudShell:  
 ```bash
-gcloud projects describe $GOOGLE_CLOUD_PROJECT --format="value(parent.id)"
+gcloud projects describe $GOOGLE_CLOUD_PROJECT --format="value(projectNumber)"
 ```
 
 ### Initialize Terraform deployment
@@ -99,9 +107,14 @@ The <walkthrough-editor-open-file filePath="tutorial/main.tf" startLine="47" end
 
 ## Create resources
 To create the resources we can first view our plan:
-``` terraform plan```
+```bash
+terraform plan
+```
 And then build the resources:
-```terraform apply```
+```bash
+terraform apply
+```
+Terraform will prompt you for confirmation here, be sure to type in 'yes' if you want to continue!
 
 After deployment, you'll need about 5-10 minutes before data from the OPs Agent appears in Google Cloud Console
 
@@ -115,8 +128,12 @@ To clean up all your work in this tutorial, first deprovision your VM with Terra
 ``` terraform destroy```
 
 Then delete the service account and the key created during this tutorial:
-```gcloud iam service-accounts keys delete key-id --iam-account terraform@$GOOGLE_CLOUD_PROJECT.iam.gserviceaccount.com```
-```gcloud iam service-accounts delete terraform@$GOOGLE_CLOUD_PROJECT.iam.gserviceaccount.com```
+```bash
+gcloud iam service-accounts keys delete key-id --iam-account terraform@$GOOGLE_CLOUD_PROJECT.iam.gserviceaccount.com
+```
+```bash
+gcloud iam service-accounts delete terraform@$GOOGLE_CLOUD_PROJECT.iam.gserviceaccount.com
+```
 
 ## Conclusion
 You've successfully used Terraform to create a VM, attach an agent policy, and deploy the Cloud Ops Agent! Great work.
