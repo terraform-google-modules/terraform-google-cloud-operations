@@ -3,25 +3,37 @@
 This tutorial will guide you through using Terraform by Hashicorp to deploy three new VMs 
 
 ## Prerequisites 
+You **MUST** have a project with billing enabled to use this tutorial.
 
-You must have 
-Enter the tutorial directory
-```cd tutorial```
+Enter the tutorial directory. 
+```bash 
+cd tutorial
+```
 
-Rename the Terraform Variable Example file
-```mv terraform.tfvars.example terraform.tfvars```
+Rename the Terraform Variable Example file.  
+```bash
+mv terraform.tfvars.example terraform.tfvars
+```
 
-## Project Selection
+### Project Selection
 
 If needed, login to your gcp account within cloudshell, this ensures you're able to run the necessary commands.  
 ```bash
 gcloud auth login
 ```
-Then set a project you'll be deploying VMs in:
+
+Set a project you'll be deploying VMs in:  
 <walkthrough-project-setup billing="true"></walkthrough-project-setup>
 
-Then enable the compute engine api for this project if it's not already enabled:
+Then enable the compute engine api for this project if it's not already enabled:  
 <walkthrough-enable-apis apis="compute.googleapis.com"></walkthrough-enable-apis>
+
+
+Lastly, set your configuration for whichever project you selected above:  
+```bash
+gcloud config set project PROJECT_ID
+```
+
 
 ## Service Account Setup 
 Next you'll need to create a service account and credentials file. These resources allow Terraform to create the VM. 
@@ -41,9 +53,11 @@ gcloud projects add-iam-policy-binding $GOOGLE_CLOUD_PROJECT --member="serviceAc
 gcloud iam service-accounts keys create test-key.json --iam-account=terraform@$GOOGLE_CLOUD_PROJECT.iam.gserviceaccount.com
 ```
 
-## Configure Terraform file
+## Using Terraform
+
+### Configure Terraform file
 This tutorial has 3 Terraform files present:
-```
+```bash
 user@cloudshell:~/terraform $ tree
 .
 |-- main.tf
@@ -52,27 +66,30 @@ user@cloudshell:~/terraform $ tree
 `-- variables.tf
 ```
 
-You'll make changes in the `terraform.tfvars` file. At a minimum you need to specify values for the following:
-```
+You'll make changes in the `terraform.tfvars` file. At a minimum you need to specify values for the following:  
+```bash
 gcp_project =
 service_account_email = 
 ```
-For this example we'll use the default compute service account which will allow us to write logs and metrics to the OiC dashboard.
-The default service account email is structured like: `PROJECT_ID_NUM-compute@developer.gserviceaccount.com`
-If you're unsure of your project number, you can capture it with the following command in CloudShell:
+Set the `gcp_project` variable with the output from:
+```bash
+echo $GOOGLE_CLOUD_PROJECT
 ```
+And for `service_acount_email` we'll use the default compute service account for this project. The default service account email is structured like: `PROJECT_ID_NUM-compute@developer.gserviceaccount.com`
+If you're unsure of your project number, you can capture it with the following command in CloudShell:  
+```bash
 gcloud projects describe $GOOGLE_CLOUD_PROJECT --format="value(parent.id)"
 ```
 
-## Initialize Terraform deployment
+### Initialize Terraform deployment
 Once you've set the two required variables, you can initialize your terraform deployment:
-```terraform init```
+```bash
+terraform init
+```
 
 If there are no issues, you are ready to continue.
 
 ## Understanding the Terraform deployment
-This section doesn't require any modification or steps but can be helpful in understanding what Terraform is doing.
-In your editor, review `main.tf` 
 
 ### Review the VM definition
 Review the  <walkthrough-editor-open-file filePath="tutorial/main.tf" startLine="15" endLine="45"> Compute Instance definition</walkthrough-editor-open-file> in `main.tf`. This defines a single compute vm for demo purposes, with several labels.
@@ -83,10 +100,10 @@ The <walkthrough-editor-open-file filePath="tutorial/main.tf" startLine="47" end
 ## Create resources
 To create the resources we can first view our plan:
 ``` terraform plan```
-And if we feel comfortable with the resources being created, we can build the resources:
+And then build the resources:
 ```terraform apply```
 
-After deployment, you'll need about 5-10 minutes for the Ops Agent to begin uploading data.
+After deployment, you'll need about 5-10 minutes before data from the OPs Agent appears in Google Cloud Console
 
 ## Review the GCE Observability Page
 After about 5 minutes, the Ops Agent should have started submitting data.
