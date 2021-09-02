@@ -31,9 +31,12 @@ And then set your configuration for whichever project you prefer:
 gcloud config set project PROJECT_ID
 ```
 
-Lastly, enable the compute engine API if it's not already enabled:
+Lastly, enable the following APIs if needed:
 ```bash
 gcloud services enable compute.googleapis.com
+```
+```bash 
+gcloud services enable osconfig.googleapis.com
 ```
 
 ## Service Account Setup 
