@@ -4,6 +4,7 @@ This tutorial will guide you through using Terraform by Hashicorp to deploy thre
 
 ## Prerequisites 
 
+You must have 
 Enter the tutorial directory
 ```cd tutorial```
 
@@ -17,7 +18,7 @@ If needed, login to your gcp account within cloudshell, this ensures you're able
 gcloud auth login
 ```
 Then set a project you'll be deploying VMs in:
-<walkthrough-project-setup billing=true></walkthrough-project-setup>
+<walkthrough-project-setup billing="true"></walkthrough-project-setup>
 
 Then enable the compute engine api for this project if it's not already enabled:
 <walkthrough-enable-apis apis="compute.googleapis.com"></walkthrough-enable-apis>
