@@ -1,0 +1,6 @@
+//Terraform will fail to initialize without these variables set
+gcp_project =
+service_account_email = 
+//Uncomment these variables and set custom values. Default region is us-central1 and zone is us-central1-a
+//gcp_region = 
+//gcp_zone = 
