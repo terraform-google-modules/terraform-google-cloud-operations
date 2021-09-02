@@ -15,6 +15,11 @@ Rename the Terraform Variable Example file.
 mv terraform.tfvars.example terraform.tfvars
 ```
 
+Download the set-permissions script:
+```bash
+curl -O https://cloud.google.com/stackdriver/docs/set-permissions.sh
+```
+
 ### Project Selection
 
 If needed, login to your gcp account within cloudshell, this ensures you're able to run the necessary commands.  
@@ -62,6 +67,11 @@ gcloud projects add-iam-policy-binding $GOOGLE_CLOUD_PROJECT --member="serviceAc
 3. Create the key-file associated with the service account:
 ```bash
 gcloud iam service-accounts keys create test-key.json --iam-account=terraform@$GOOGLE_CLOUD_PROJECT.iam.gserviceaccount.com
+```
+4. Run the `set-permissions.sh` script to add the necessary logging and monitoring roles:
+```bash
+chmod 777 set-permissions.sh
+./set-permissions.sh --project=$GOOGLE_CLOUD_PROJECT
 ```
 
 ## Using Terraform
