@@ -12,13 +12,15 @@ Rename the Terraform Variable Example file
 
 ## Project Selection
 
-If needed, login to your gcp account within cloudshell, this ensures you're able to run the necessary commands.
+If needed, login to your gcp account within cloudshell, this ensures you're able to run the necessary commands.  
 ```bash
 gcloud auth login
 ```
 Then set a project you'll be deploying VMs in:
-<walkthrough-project-setup></walkthrough-project-setup>
+<walkthrough-project-setup billing=true></walkthrough-project-setup>
 
+Then enable the compute engine api for this project if it's not already enabled:
+<walkthrough-enable-apis apis="compute.googleapis.com"></walkthrough-enable-apis>
 
 ## Service Account Setup 
 Next you'll need to create a service account and credentials file. These resources allow Terraform to create the VM. 
