@@ -65,7 +65,9 @@ gcloud projects add-iam-policy-binding $GOOGLE_CLOUD_PROJECT \
   --role="roles/osconfig.guestPolicyAdmin" 
 ```
 ```bash
-gcloud projects add-iam-policy-binding $GOOGLE_CLOUD_PROJECT --member="serviceAccount:terraform@$GOOGLE_CLOUD_PROJECT.iam.gserviceaccount.com" --role="iam.serviceAccountUser"
+gcloud projects add-iam-policy-binding $GOOGLE_CLOUD_PROJECT \
+  --member="serviceAccount:terraform@$GOOGLE_CLOUD_PROJECT.iam.gserviceaccount.com" \
+  --role="iam.serviceAccountUser"
 ```
 
 3. Create the key-file associated with the service account:
