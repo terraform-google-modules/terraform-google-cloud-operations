@@ -51,7 +51,9 @@ For this example we'll name the service account and display it as 'terraform' bu
 
 1. Create the Terraform service account.
 ```bash
-gcloud iam service-accounts create terraform --description="Service account for VM provisioning with Terraform" --display-name="terraform"
+gcloud iam service-accounts create terraform \
+  --description="Service account for VM provisioning with Terraform" \
+  --display-name="terraform"
 ```
 2. Create the iam policy bindings and attach the necessary role to the account:
 ```bash 
