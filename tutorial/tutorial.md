@@ -60,7 +60,9 @@ gcloud iam service-accounts create terraform \
 gcloud projects add-iam-policy-binding $GOOGLE_CLOUD_PROJECT --member="serviceAccount:terraform@$GOOGLE_CLOUD_PROJECT.iam.gserviceaccount.com" --role="roles/compute.admin" 
 ```
 ```bash 
-gcloud projects add-iam-policy-binding $GOOGLE_CLOUD_PROJECT --member="serviceAccount:terraform@$GOOGLE_CLOUD_PROJECT.iam.gserviceaccount.com" --role="roles/osconfig.guestPolicyAdmin" 
+gcloud projects add-iam-policy-binding $GOOGLE_CLOUD_PROJECT \
+  --member="serviceAccount:terraform@$GOOGLE_CLOUD_PROJECT.iam.gserviceaccount.com" \
+  --role="roles/osconfig.guestPolicyAdmin" 
 ```
 ```bash
 gcloud projects add-iam-policy-binding $GOOGLE_CLOUD_PROJECT --member="serviceAccount:terraform@$GOOGLE_CLOUD_PROJECT.iam.gserviceaccount.com" --role="iam.serviceAccountUser"
