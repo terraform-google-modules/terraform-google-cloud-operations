@@ -74,7 +74,8 @@ gcloud projects add-iam-policy-binding $GOOGLE_CLOUD_PROJECT \
 
 3. Create the key-file associated with the service account:
 ```bash
-gcloud iam service-accounts keys create test-key.json --iam-account=terraform@$GOOGLE_CLOUD_PROJECT.iam.gserviceaccount.com
+gcloud iam service-accounts keys create test-key.json \
+  --iam-account=terraform@$GOOGLE_CLOUD_PROJECT.iam.gserviceaccount.com
 ```
 4. Run the `set-permissions.sh` script to add the necessary logging and monitoring roles:
 ```bash
