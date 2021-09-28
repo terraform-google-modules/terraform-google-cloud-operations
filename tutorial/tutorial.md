@@ -33,7 +33,9 @@ gcloud projects list
 ```
 And then set your configuration for whichever project you prefer:  
 ```bash
-gcloud config set project PROJECT_ID
+
+GOOGLE_CLOUD_PROJECT="{FILL IN THE PROJECT ID HERE}"
+gcloud config set project $GOOGLE_CLOUD_PROJECT
 ```
 
 Lastly, enable the following APIs if needed:
