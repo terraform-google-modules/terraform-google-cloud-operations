@@ -35,7 +35,7 @@ INSTANCES_JSON="$(echo "$8" | base64 --decode)"
 
 
 # include functions to build gcloud command
-SCRIPT_DIR="$( realpath "$( dirname "${BASH_SOURCE[0]}" )" )"
+SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd -P )"
 UTILS_ABS_PATH="${SCRIPT_DIR}/script-utils.sh"
 # shellcheck disable=SC1090
 source "$UTILS_ABS_PATH"
