@@ -14,9 +14,7 @@
  * limitations under the License.
  */
 
-provider "google" {
-  version = "~> 2.0"
-}
+provider "google" {}
 
 module "agent_policy_simple" {
   source     = "./../../modules/agent-policy"
