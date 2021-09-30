@@ -222,7 +222,7 @@ setup() {
 @test "Test get_describe_command" {
     local expected_command="gcloud beta compute instances ops-agents"
     expected_command="$expected_command policies describe ops-agents-test-policy"
-    expected_command="$expected_command --project='test-project-id' --quiet"
+    expected_command="$expected_command --project='test-project-id' --quiet --format=json"
 
     run get_describe_command "$PROJECT_ID" "$POLICY_ID"
 
