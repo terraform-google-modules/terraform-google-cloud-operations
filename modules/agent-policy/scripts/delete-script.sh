@@ -26,7 +26,7 @@ PROJECT_ID="$1"
 POLICY_ID="$2"
 
 # include functions to build gcloud command
-SCRIPT_DIR="$( realpath "$( dirname "${BASH_SOURCE[0]}" )" )"
+SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd -P )"
 UTILS_ABS_PATH="${SCRIPT_DIR}/script-utils.sh"
 # shellcheck disable=SC1090
 source "$UTILS_ABS_PATH"
