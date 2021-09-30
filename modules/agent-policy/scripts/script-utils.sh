@@ -78,7 +78,7 @@ function get_formatted_list_of_map() {
 function get_etag() {
     local python="python -c 'import json, sys;"
     python="$python json_dump = json.load(sys.stdin);"
-    python="$python print json_dump[\"etag\"]'"
+    python="$python print(json_dump[\"etag\"])'"
     formatted="$(echo "$1" | eval "$python")"
     echo "$formatted"
 }
@@ -311,7 +311,7 @@ function get_describe_command() {
     project_flag=$(get_flag "$project_flag_name" "$project_id")
 
     local command="gcloud $LAUNCH_STAGE compute instances ops-agents policies describe"
-    command="$command $policy_id$project_flag --quiet"
+    command="$command $policy_id$project_flag --quiet --format=json"
     echo "$command"
 }
 
