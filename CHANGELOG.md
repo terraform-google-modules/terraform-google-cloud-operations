@@ -8,6 +8,15 @@ and this project adheres to
 [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 This changelog is generated automatically based on [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/).
 
+### [0.2.2](https://www.github.com/terraform-google-modules/terraform-google-cloud-operations/compare/v0.2.1...v0.2.2) (2021-10-15)
+
+
+### Bug Fixes
+
+* remove dependency on realpath for mac ([#23](https://www.github.com/terraform-google-modules/terraform-google-cloud-operations/issues/23)) ([c69c4ec](https://www.github.com/terraform-google-modules/terraform-google-cloud-operations/commit/c69c4ecb54d4cfa8757fc50456388b45802e9e40))
+* Support Python 3 ([#27](https://www.github.com/terraform-google-modules/terraform-google-cloud-operations/issues/27)) ([04094aa](https://www.github.com/terraform-google-modules/terraform-google-cloud-operations/commit/04094aaa1502f760ecbded9f451cc0099aad8c31))
+* use relative paths in gcloud scripts ([#32](https://www.github.com/terraform-google-modules/terraform-google-cloud-operations/issues/32)) ([8f0b303](https://www.github.com/terraform-google-modules/terraform-google-cloud-operations/commit/8f0b303840ee59aaca9b14c63b6ea272be920881))
+
 ### [0.2.1](https://www.github.com/terraform-google-modules/terraform-google-cloud-operations/compare/v0.2.0...v0.2.1) (2021-03-30)
 
 
