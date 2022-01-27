@@ -31,12 +31,12 @@ LAUNCH_STAGE="beta"
 # Return:
 #   A well-formatted command line flag value for a list of strings
 function get_formatted_list_of_strings() {
-    local formatted
-    local python="python -c 'import json, sys;"
-    python="$python list_of_strings = json.load(sys.stdin);"
-    python="$python print (\",\".join(x for x in list_of_strings))'"
-    formatted="$(echo "$1" | eval "$python")"
-    echo "$formatted"
+    local -a python_cmd=(
+        'import json, sys;'
+        'list_of_strings = json.load(sys.stdin);'
+        'print (",".join(x for x in list_of_strings))'
+    )
+    echo "$1" | python3 -c "${python_cmd[*]}"
 }
 
 
@@ -45,14 +45,14 @@ function get_formatted_list_of_strings() {
 # Return:
 #   A well-formatted command line flag value for a list of objects
 function get_formatted_list_of_objects() {
-    local formatted
-    local python="python -c 'import json, sys;"
-    python="$python list_of_objs = json.load(sys.stdin);"
-    python="$python print (\";\".join(\",\".join([\"{}={}\".format(k.replace(\"_\", \"-\"),"
-    python="$python str(v).lower() if type(v) is bool else v) for k, v in obj.items()])"
-    python="$python for obj in list_of_objs))'"
-    formatted="$(echo "$1" | eval "$python")"
-    echo "$formatted"
+    local -a python_cmd=(
+        'import json, sys;'
+        'list_of_objs = json.load(sys.stdin);'
+        'print (";".join(",".join(["{}={}".format(k.replace("_", "-"),'
+        'str(v).lower() if type(v) is bool else v) for k, v in obj.items()])'
+        'for obj in list_of_objs))'
+    )
+    echo "$1" | python3 -c "${python_cmd[*]}"
 }
 
 
@@ -61,14 +61,13 @@ function get_formatted_list_of_objects() {
 # Return:
 #   A well-formatted command line flag value for a list of list of objects
 function get_formatted_list_of_map() {
-    local formatted
-    local python="python -c 'import json, sys;"
-    python="$python list_of_objs = json.load(sys.stdin);"
-    python="$python print (\";\".join(\",\".join([\"{}={}\".format(k, v)"
-    python="$python for k, v in obj.items()]) for obj in list_of_objs))'"
-    formatted="$(echo "$1" | eval "$python")"
-    echo "$formatted"
-
+    local -a python_cmd=(
+        'import json, sys;'
+        'list_of_objs = json.load(sys.stdin);'
+        'print (";".join(",".join(["{}={}".format(k, v)'
+        'for k, v in obj.items()]) for obj in list_of_objs))'
+    )
+    echo "$1" | python3 -c "${python_cmd[*]}"
 }
 
 # Params:
@@ -76,11 +75,12 @@ function get_formatted_list_of_map() {
 # Return:
 #   the etag in the given string
 function get_etag() {
-    local python="python -c 'import json, sys;"
-    python="$python json_dump = json.load(sys.stdin);"
-    python="$python print(json_dump[\"etag\"])'"
-    formatted="$(echo "$1" | eval "$python")"
-    echo "$formatted"
+    local -a python_cmd=(
+        'import json, sys;'
+        'json_dump = json.load(sys.stdin);'
+        'print(json_dump["etag"])'
+    )
+    echo "$1" | python3 -c "${python_cmd[*]}"
 }
 
 
