@@ -49,8 +49,8 @@ function get_formatted_list_of_objects() {
         'import json, sys;'
         'list_of_objs = json.load(sys.stdin);'
         'print (";".join(",".join(["{}={}".format(k.replace("_", "-"),'
-        'str(v).lower() if type(v) is bool else v) for k, v in obj.items()])'
-        'for obj in list_of_objs))'
+        'str(v).lower() if type(v) is bool else v)'
+        'for k, v in sorted(obj.items())]) for obj in list_of_objs))'
     )
     echo "$1" | python3 -c "${python_cmd[*]}"
 }
@@ -65,7 +65,7 @@ function get_formatted_list_of_map() {
         'import json, sys;'
         'list_of_objs = json.load(sys.stdin);'
         'print (";".join(",".join(["{}={}".format(k, v)'
-        'for k, v in obj.items()]) for obj in list_of_objs))'
+        'for k, v in sorted(obj.items())]) for obj in list_of_objs))'
     )
     echo "$1" | python3 -c "${python_cmd[*]}"
 }
