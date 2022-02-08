@@ -8,6 +8,13 @@ and this project adheres to
 [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 This changelog is generated automatically based on [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/).
 
+### [0.2.3](https://github.com/terraform-google-modules/terraform-google-cloud-operations/compare/v0.2.2...v0.2.3) (2022-02-08)
+
+
+### Bug Fixes
+
+* Use python3 explicitly and clean up python commands in script-utils.sh. ([#36](https://github.com/terraform-google-modules/terraform-google-cloud-operations/issues/36)) ([a1dcdb4](https://github.com/terraform-google-modules/terraform-google-cloud-operations/commit/a1dcdb46b4f6c090579085c521e9820a68907cf3))
+
 ### [0.2.2](https://www.github.com/terraform-google-modules/terraform-google-cloud-operations/compare/v0.2.1...v0.2.2) (2021-10-15)
 
 
