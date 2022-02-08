@@ -55,7 +55,7 @@ setup() {
     local expected_command="gcloud beta compute instances ops-agents"
     expected_command="$expected_command policies create ops-agents-test-policy"
     expected_command="$expected_command --agent-rules='type=metrics'"
-    expected_command="$expected_command --os-types='version=8,short-name=centos'"
+    expected_command="$expected_command --os-types='short-name=centos,version=8'"
     expected_command="$expected_command --project='test-project-id' --quiet"
 
     run get_create_command "$PROJECT_ID" "$POLICY_ID" \
@@ -77,7 +77,7 @@ setup() {
     expected_command="$expected_command policies create ops-agents-test-policy"
     expected_command="$expected_command --description='an example test policy'"
     expected_command="$expected_command --agent-rules='type=metrics'"
-    expected_command="$expected_command --os-types='version=8,short-name=centos'"
+    expected_command="$expected_command --os-types='short-name=centos,version=8'"
     expected_command="$expected_command --project='test-project-id' --quiet"
 
     run get_create_command "$PROJECT_ID" "$POLICY_ID" \
@@ -99,10 +99,10 @@ setup() {
 
     local expected_command="gcloud beta compute instances ops-agents"
     expected_command="$expected_command policies create ops-agents-test-policy"
-    expected_command="$expected_command --agent-rules='version=current-major,"
-    expected_command="${expected_command}type=logging,enable-autoupgrade=true,"
-    expected_command="${expected_command}package-state=installed;type=metrics'"
-    expected_command="$expected_command --os-types='version=8,short-name=centos'"
+    expected_command="$expected_command --agent-rules='enable-autoupgrade=true,"
+    expected_command="${expected_command}package-state=installed,type=logging,"
+    expected_command="${expected_command}version=current-major;type=metrics'"
+    expected_command="$expected_command --os-types='short-name=centos,version=8'"
     expected_command="$expected_command --project='test-project-id' --quiet"
 
     run get_create_command "$PROJECT_ID" "$POLICY_ID" \
@@ -124,9 +124,9 @@ setup() {
     local expected_command="gcloud beta compute instances ops-agents"
     expected_command="$expected_command policies create ops-agents-test-policy"
     expected_command="$expected_command --agent-rules='type=metrics'"
-    expected_command="$expected_command --group-labels='product=myapp,env=prod;"
-    expected_command="${expected_command}product=myapp,env=staging'"
-    expected_command="$expected_command --os-types='version=8,short-name=centos'"
+    expected_command="$expected_command --group-labels='env=prod,product=myapp;"
+    expected_command="${expected_command}env=staging,product=myapp'"
+    expected_command="$expected_command --os-types='short-name=centos,version=8'"
     expected_command="$expected_command --project='test-project-id' --quiet"
 
     run get_create_command "$PROJECT_ID" "$POLICY_ID" \
@@ -147,7 +147,7 @@ setup() {
     local expected_command="gcloud beta compute instances ops-agents"
     expected_command="$expected_command policies create ops-agents-test-policy"
     expected_command="$expected_command --agent-rules='type=metrics'"
-    expected_command="$expected_command --os-types='version=8,short-name=centos'"
+    expected_command="$expected_command --os-types='short-name=centos,version=8'"
     expected_command="$expected_command --zones='us-central1-c,"
     expected_command="${expected_command}asia-northeast2-b,europe-north1-b'"
     expected_command="$expected_command --project='test-project-id' --quiet"
@@ -170,7 +170,7 @@ setup() {
     local expected_command="gcloud beta compute instances ops-agents"
     expected_command="$expected_command policies create ops-agents-test-policy"
     expected_command="$expected_command --agent-rules='type=metrics'"
-    expected_command="$expected_command --os-types='version=8,short-name=centos'"
+    expected_command="$expected_command --os-types='short-name=centos,version=8'"
     expected_command="$expected_command --instances='zones/us-central1-a/"
     expected_command="${expected_command}instances/test-instance'"
     expected_command="$expected_command --project='test-project-id' --quiet"
@@ -199,7 +199,7 @@ setup() {
     local expected_command="gcloud beta compute instances ops-agents"
     expected_command="$expected_command policies update ops-agents-test-policy"
     expected_command="$expected_command --agent-rules='type=metrics'"
-    expected_command="$expected_command --os-types='version=8,short-name=centos'"
+    expected_command="$expected_command --os-types='short-name=centos,version=8'"
     expected_command="$expected_command --clear-group-labels"
     expected_command="$expected_command --clear-zones"
     expected_command="$expected_command --clear-instances"
