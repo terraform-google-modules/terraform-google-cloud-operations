@@ -10,7 +10,7 @@ Sample module to install [Ops Agent](https://cloud.google.com/stackdriver/docs/s
 ```hcl
 module "agent_policy" {
   source     = "terraform-google-modules/cloud-operations/google//modules/agent-policy"
-  version    = "~> 0.1.0"
+  version    = "~> 0.2.3"
 
   project_id = "<PROJECT ID>"
   policy_id  = "ops-agents-example-policy"
@@ -41,7 +41,7 @@ Sample module to install [Logging Agent](https://cloud.google.com/logging/docs/a
 ```hcl
 module "agent_policy" {
   source     = "terraform-google-modules/cloud-operations/google//modules/agent-policy"
-  version    = "~> 0.1.0"
+  version    = "~> 0.2.3"
 
   project_id = "<PROJECT ID>"
   policy_id  = "ops-agents-example-policy"
@@ -124,7 +124,7 @@ For now, exactly one OS type needs to be specified. Each OS type contains the fo
 | Name | Description | Type | Default | Required |
 |------|-------------|:----:|:-----:|:-----:|
 | short_name | Short name of the OS. Allowed values: `"centos"`, `"debian"`, `"rhel"`, `"sles"`, `"sles_sap"`, `"ubuntu"`. | string | n/a | yes |
-| version | Version of the OS. | string | n/a | no |
+| version | Version of the OS. | string | n/a | yes |
 
 To inspect the exact OS short name and version of an instance, run `gcloud beta compute instances os-inventory describe INSTANCE_NAME`.
 
