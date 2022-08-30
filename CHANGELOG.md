@@ -8,6 +8,14 @@ and this project adheres to
 [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 This changelog is generated automatically based on [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/).
 
+## [0.3.0](https://github.com/terraform-google-modules/terraform-google-cloud-operations/compare/v0.2.3...v0.3.0) (2022-08-30)
+
+
+### Features
+
+* adding stale.yml ([0956ca5](https://github.com/terraform-google-modules/terraform-google-cloud-operations/commit/0956ca5fcd2d09d832e699fd0ad3dfe7a7246db9))
+* adding stale.yml ([f48495d](https://github.com/terraform-google-modules/terraform-google-cloud-operations/commit/f48495df551786cec926955011bb9bd2e94f9ed9))
+
 ### [0.2.3](https://github.com/terraform-google-modules/terraform-google-cloud-operations/compare/v0.2.2...v0.2.3) (2022-02-08)
 
 
