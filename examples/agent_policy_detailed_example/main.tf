@@ -14,8 +14,6 @@
  * limitations under the License.
  */
 
-provider "google" {}
-
 module "agent_policy_detailed" {
   source      = "./../../modules/agent-policy"
   project_id  = var.project_id
