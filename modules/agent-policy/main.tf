@@ -31,7 +31,7 @@ module "gcloud-upsert" {
     ${base64encode(jsonencode(var.zones == null ? [] : var.zones))} \
     ${base64encode(jsonencode(var.instances == null ? [] : var.instances))}
     EOT
-  create_cmd_triggers   = { uuid = uuid() }
+  create_cmd_triggers   = { uuid = random_uuid.uuid.result }
 }
 
 module "gcloud-destroy" {
@@ -44,4 +44,7 @@ module "gcloud-destroy" {
 
   destroy_cmd_entrypoint = "${path.module}/scripts/delete-script.sh"
   destroy_cmd_body       = "${var.project_id} ${jsonencode(var.policy_id)}"
+}
+
+resource "random_uuid" "uuid" {
 }
