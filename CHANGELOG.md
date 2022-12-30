@@ -8,6 +8,15 @@ and this project adheres to
 [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 This changelog is generated automatically based on [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/).
 
+## [0.2.4](https://github.com/terraform-google-modules/terraform-google-cloud-operations/compare/v0.2.3...v0.2.4) (2022-12-30)
+
+
+### Bug Fixes
+
+* create uuid as a resource to save value between runs ([#58](https://github.com/terraform-google-modules/terraform-google-cloud-operations/issues/58)) ([2f0fed3](https://github.com/terraform-google-modules/terraform-google-cloud-operations/commit/2f0fed3a9e7ddad239f9ce8f817bfa2cab75acb3))
+* fixes lint issues and generates metadata ([#56](https://github.com/terraform-google-modules/terraform-google-cloud-operations/issues/56)) ([e369bfb](https://github.com/terraform-google-modules/terraform-google-cloud-operations/commit/e369bfb736494815eefe059e111aeec51f1a5f2c))
+
+
 ### [0.2.3](https://github.com/terraform-google-modules/terraform-google-cloud-operations/compare/v0.2.2...v0.2.3) (2022-02-08)
 
 
