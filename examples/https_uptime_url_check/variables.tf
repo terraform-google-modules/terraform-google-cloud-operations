@@ -35,6 +35,6 @@ variable "email" {
 }
 
 variable "sms" {
-  description = "Phone number to alert if uptime check fails."
+  description = "Phone number (including country code) to alert if uptime check fails."
   type        = string
 }

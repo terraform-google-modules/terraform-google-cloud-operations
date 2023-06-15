@@ -10,12 +10,16 @@ This example illustrates how to use the `simple-uptime-check` module for a simpl
 | email | Email address to alert if uptime check fails. | `string` | n/a | yes |
 | hostname | The base hostname for the uptime check. | `string` | n/a | yes |
 | project\_id | The ID of the project in which to provision resources. | `string` | n/a | yes |
-| sms | Phone number to alert if uptime check fails. | `string` | n/a | yes |
+| sms | Phone number (including country code) to alert if uptime check fails. | `string` | n/a | yes |
 | uptime\_check\_display\_name | The ID of the project in which to provision resources. | `string` | n/a | yes |
 
 ## Outputs
 
-No output.
+| Name | Description |
+|------|-------------|
+| alert\_policy\_id | The id of the alert policy. |
+| notification\_channel\_ids | The ids of the notification channels |
+| uptime\_check\_id | The id of the uptime check. |
 
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 
