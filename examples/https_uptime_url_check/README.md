@@ -7,11 +7,11 @@ This example illustrates how to use the `simple-uptime-check` module for a simpl
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| email | Email address to alert if uptime check fails. | `string` | n/a | yes |
-| hostname | The base hostname for the uptime check. | `string` | n/a | yes |
+| email | Email address to alert if uptime check fails. | `string` | `"example-email@gmail.com"` | no |
+| hostname | The base hostname for the uptime check. | `string` | `"example-hostname.com"` | no |
 | project\_id | The ID of the project in which to provision resources. | `string` | n/a | yes |
-| sms | Phone number (including country code) to alert if uptime check fails. | `string` | n/a | yes |
-| uptime\_check\_display\_name | The ID of the project in which to provision resources. | `string` | n/a | yes |
+| sms | Phone number (including country code) to alert if uptime check fails. | `string` | `"+10123456789"` | no |
+| uptime\_check\_display\_name | The ID of the project in which to provision resources. | `string` | `"example-uptime-check-name"` | no |
 
 ## Outputs
 
