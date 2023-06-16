@@ -23,4 +23,8 @@ terraform {
       version = "~> 4.0"
     }
   }
+
+  provider_meta "google" {
+    module_name = "blueprints/terraform/terraform-google-cloud-operations:simple-uptime-check/v0.3.0"
+  } 
 }

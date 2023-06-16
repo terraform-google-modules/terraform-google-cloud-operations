@@ -15,7 +15,7 @@
  */
  
 locals {
-  use_ssl = var.protocol == "HTTPS" ? true : false
+  use_ssl = var.protocol == "HTTPS"
   http_port = var.port == null && var.protocol == "HTTPS" ? 443 : 80
 
   alert_policy_name = coalesce(var.alert_policy_display_name, "${var.uptime_check_display_name} Uptime Failure Alert Policy")
