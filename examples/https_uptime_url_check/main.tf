@@ -34,10 +34,10 @@ module "uptime-check" {
       type         = "email"
       labels       = { email_address = var.email }
     },
-    {
-      display_name = "SMS Notification Channel"
-      type         = "sms"
-      labels       = { number = var.sms }
-    }
+    # {
+    #   display_name = "SMS Notification Channel"
+    #   type         = "sms"
+    #   labels       = { number = var.sms }
+    # }
   ]
 }

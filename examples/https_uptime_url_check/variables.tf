@@ -37,8 +37,9 @@ variable "email" {
   default     = "example-email@gmail.com"
 }
 
-variable "sms" {
-  description = "Phone number (including country code) to alert if uptime check fails."
-  type        = string
-  default     = "+10123456789"
-}
+# Uncomment if you'd like to add an SMS notification channel
+# variable "sms" {
+#   description = "Phone number (including country code) to alert if uptime check fails."
+#   type        = string
+#   default     = "example-number"
+# }
