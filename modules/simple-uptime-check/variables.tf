@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
- 
+
 variable "project_id" {
   description = "The project ID to host the uptime check in (required)."
   type        = string
@@ -43,20 +43,20 @@ variable "period" {
 
 variable "content" {
   description = "String or regex content to match."
-  type = string
-  default = null
+  type        = string
+  default     = null
 }
 
 variable "matcher" {
   description = "Type of content matcher. One of: CONTAINS_STRING, NOT_CONTAINS_STRING, MATCHES_REGEX, NOT_MATCHES_REGEX, MATCHES_JSON_PATH, NOT_MATCHES_JSON_PATH"
-  type = string
-  default = "CONTAINS_STRING"
+  type        = string
+  default     = "CONTAINS_STRING"
 }
 
 variable "json_path_matcher" {
   description = "If matcher is MATCHES_JSON_PATH or NOT_MATCHES_JSON_PATH, the json matcher and path to use. The json matcher must be either EXACT_MATCH or REGEX_MATCH."
   type = object({
-    json_path = string
+    json_path    = string
     json_matcher = string
   })
   default = null
@@ -97,14 +97,14 @@ variable "auth_info" {
 
 variable "accepted_response_status_values" {
   description = "Check will only pass if the HTTP response status code is in this set of status values (combined with the set of status classes)."
-  type = set(number)
-  default = []
+  type        = set(number)
+  default     = []
 }
 
 variable "accepted_response_status_classes" {
   description = "Check will only pass if the HTTP response status code is in this set of status classes (combined with the set of status values). Possible values: STATUS_CLASS_1XX, STATUS_CLASS_2XX, STATUS_CLASS_3XX, STATUS_CLASS_4XX, STATUS_CLASS_5XX, STATUS_CLASS_ANY"
-  type = set(string)
-  default = []
+  type        = set(string)
+  default     = []
 }
 
 variable "mask_headers" {
@@ -145,7 +145,7 @@ variable "checker_type" {
 
 variable "resource_group" {
   description = "Group resource associated with configuration. Resource types must be one of: RESOURCE_TYPE_UNSPECIFIED, INSTANCE, AWS_ELB_LOAD_BALANCER"
-  type        = object({
+  type = object({
     resource_type = string
     group_id      = string
   })
@@ -154,9 +154,9 @@ variable "resource_group" {
 
 variable "monitored_resource" {
   description = "Monitored resource type and labels. One of: uptime_url, gce_instance, gae_app, aws_ec2_instance, aws_elb_load_balancer, k8s_service, servicedirectory_service. See https://cloud.google.com/monitoring/api/resources for a list of labels."
-  type        = object({
+  type = object({
     monitored_resource_type = string
-    labels = map(string)
+    labels                  = map(string)
   })
   default = null
 }
@@ -165,8 +165,8 @@ variable "monitored_resource" {
 
 variable "alert_policy_display_name" {
   description = "Display name for the alert policy. Defaults to \"var.uptime_check_display_name Uptime Failure Alert Policy\" if left empty."
-  type = string
-  default = ""
+  type        = string
+  default     = ""
 }
 
 variable "enabled" {
@@ -213,25 +213,25 @@ variable "condition_threshold_filter" {
 
 variable "aggregations" {
   description = "Specifies the alignment of data points in individual time series as well as how to combine the retrieved time series together."
-  type        = object({
-    alignment_period = string
-    per_series_aligner = string
-    group_by_fields = list(string)
+  type = object({
+    alignment_period     = string
+    per_series_aligner   = string
+    group_by_fields      = list(string)
     cross_series_reducer = string
   })
-  default     = {
-    alignment_period = "1200s"
-    per_series_aligner = "ALIGN_NEXT_OLDER"
-    group_by_fields = ["resource.label.*"]
+  default = {
+    alignment_period     = "1200s"
+    per_series_aligner   = "ALIGN_NEXT_OLDER"
+    group_by_fields      = ["resource.label.*"]
     cross_series_reducer = "REDUCE_COUNT_FALSE"
   }
 }
 
 variable "condition_threshold_trigger" {
   description = "Defines the percent and number of time series that must fail the predicate for the condition to be triggered"
-  type        = object({
+  type = object({
     percent = number
-    count = number
+    count   = number
   })
   default = {
     percent = null
@@ -253,11 +253,11 @@ variable "auto_close" {
 
 variable "notification_channel_strategy" {
   description = "Control over how the notification channels in notification_channels are notified when this alert fires, on a per-channel basis."
-  type        = object({
+  type = object({
     notification_channel_names = list(string)
-    renotify_interval = number
+    renotify_interval          = number
   })
-  default     = null
+  default = null
 }
 
 variable "alert_policy_user_labels" {
@@ -268,12 +268,12 @@ variable "alert_policy_user_labels" {
 
 variable "notification_channels" {
   description = "List of all the notification channels to create for alerting if the uptime check fails. See https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.notificationChannelDescriptors/list for a list of types and labels."
-  type        = list(object({
+  type = list(object({
     display_name = string
     type         = string
     labels       = map(string)
   }))
-  default     = []
+  default = []
 }
 
 variable "existing_notification_channels" {

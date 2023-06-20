@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
- 
+
 variable "project_id" {
   description = "The ID of the project in which to provision resources."
   type        = string

@@ -13,15 +13,15 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
- 
+
 locals {
-  use_ssl = var.protocol == "HTTPS"
+  use_ssl   = var.protocol == "HTTPS"
   http_port = var.port == null && var.protocol == "HTTPS" ? 443 : 80
 
-  alert_policy_name = coalesce(var.alert_policy_display_name, "${var.uptime_check_display_name} Uptime Failure Alert Policy")
+  alert_policy_name     = coalesce(var.alert_policy_display_name, "${var.uptime_check_display_name} Uptime Failure Alert Policy")
   enable_alert_strategy = var.auto_close != null || var.notification_rate_limit_period != null || var.notification_channel_strategy != null ? true : false
-  resource_type = var.monitored_resource != null ? var.monitored_resource.monitored_resource_type : var.resource_group.resource_type
-  threshold_filter = var.condition_threshold_filter == "" ? "metric.type=\"monitoring.googleapis.com/uptime_check/check_passed\" AND metric.label.check_id=\"${google_monitoring_uptime_check_config.uptime_check.uptime_check_id}\" AND resource.type=\"${local.resource_type}\"" : var.condition_threshold_filter
+  resource_type         = var.monitored_resource != null ? var.monitored_resource.monitored_resource_type : var.resource_group.resource_type
+  threshold_filter      = var.condition_threshold_filter == "" ? "metric.type=\"monitoring.googleapis.com/uptime_check/check_passed\" AND metric.label.check_id=\"${google_monitoring_uptime_check_config.uptime_check.uptime_check_id}\" AND resource.type=\"${local.resource_type}\"" : var.condition_threshold_filter
 }
 
 resource "google_monitoring_uptime_check_config" "uptime_check" {
@@ -46,9 +46,9 @@ resource "google_monitoring_uptime_check_config" "uptime_check" {
       use_ssl        = local.use_ssl
       validate_ssl   = var.validate_ssl
 
-      dynamic "auth_info" { 
+      dynamic "auth_info" {
         for_each = var.auth_info != null ? [1] : []
-        
+
         content {
           username = var.auth_info.username
           password = var.auth_info.password
@@ -100,7 +100,7 @@ resource "google_monitoring_uptime_check_config" "uptime_check" {
 
   dynamic "resource_group" {
     for_each = var.resource_group != null ? [1] : []
-    
+
     content {
       resource_type = var.resource_group.resource_type
       group_id      = var.resource_group.group_id
@@ -128,25 +128,25 @@ resource "google_monitoring_alert_policy" "alert_policy" {
 
     condition_threshold {
       threshold_value = var.condition_threshold_value
-      duration   = var.condition_threshold_duration
-      filter     = local.threshold_filter
-      comparison = var.condition_threshold_comparison
+      duration        = var.condition_threshold_duration
+      filter          = local.threshold_filter
+      comparison      = var.condition_threshold_comparison
 
       aggregations {
-        alignment_period   = var.aggregations.alignment_period
-        per_series_aligner = var.aggregations.per_series_aligner
-        group_by_fields = var.aggregations.group_by_fields
+        alignment_period     = var.aggregations.alignment_period
+        per_series_aligner   = var.aggregations.per_series_aligner
+        group_by_fields      = var.aggregations.group_by_fields
         cross_series_reducer = var.aggregations.cross_series_reducer
       }
 
       trigger {
         percent = var.condition_threshold_trigger.percent
-        count = var.condition_threshold_trigger.count
+        count   = var.condition_threshold_trigger.count
       }
     }
   }
-  
-  notification_channels = concat([ for channel in google_monitoring_notification_channel.notification_channel : channel.id ], var.existing_notification_channels)
+
+  notification_channels = concat([for channel in google_monitoring_notification_channel.notification_channel : channel.id], var.existing_notification_channels)
 
   dynamic "alert_strategy" {
     for_each = local.enable_alert_strategy ? [1] : []
@@ -167,7 +167,7 @@ resource "google_monitoring_alert_policy" "alert_policy" {
 
         content {
           notification_channel_names = var.notification_channel_strategy.notification_channel_names
-          renotify_interval = var.notification_channel_strategy.renotify_interval
+          renotify_interval          = var.notification_channel_strategy.renotify_interval
         }
       }
     }
@@ -177,7 +177,7 @@ resource "google_monitoring_alert_policy" "alert_policy" {
 }
 
 resource "google_monitoring_notification_channel" "notification_channel" {
-  for_each = { for k, v in var.notification_channels:  k => v }
+  for_each     = { for k, v in var.notification_channels : k => v }
   project      = var.project_id
   display_name = each.value.display_name
   type         = each.value.type

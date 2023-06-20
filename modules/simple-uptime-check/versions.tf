@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
- 
+
 terraform {
   required_version = ">= 0.13"
 
@@ -26,5 +26,5 @@ terraform {
 
   provider_meta "google" {
     module_name = "blueprints/terraform/terraform-google-cloud-operations:simple-uptime-check/v0.3.0"
-  } 
+  }
 }
