@@ -8,6 +8,13 @@ and this project adheres to
 [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 This changelog is generated automatically based on [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/).
 
+## [0.3.0](https://github.com/terraform-google-modules/terraform-google-cloud-operations/compare/v0.2.4...v0.3.0) (2023-06-21)
+
+
+### Features
+
+* adding a simple uptime check sub-module ([#67](https://github.com/terraform-google-modules/terraform-google-cloud-operations/issues/67)) ([202afef](https://github.com/terraform-google-modules/terraform-google-cloud-operations/commit/202afeff2562199bf65cc0fc92d18345a7edad99))
+
 ## [0.2.4](https://github.com/terraform-google-modules/terraform-google-cloud-operations/compare/v0.2.3...v0.2.4) (2022-12-30)
 
 
