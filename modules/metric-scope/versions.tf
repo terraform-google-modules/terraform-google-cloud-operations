@@ -1,5 +1,5 @@
 /**
- * Copyright 2019 Google LLC
+ * Copyright 2023 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,15 +14,14 @@
  * limitations under the License.
  */
 
-output "project_id" {
-  value = module.project.project_id
-}
 
-output "monitor_project" {
-  value = [module.monitored_project_1.project_id, module.monitored_project_2.project_id]
-}
+terraform {
+  required_version = ">= 0.13"
 
-output "sa_key" {
-  value     = google_service_account_key.int_test.private_key
-  sensitive = true
+  required_providers {
+    google = {
+      source  = "hashicorp/google"
+      version = "~> 4.0"
+    }
+  }
 }

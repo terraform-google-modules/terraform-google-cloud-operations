@@ -14,15 +14,9 @@
  * limitations under the License.
  */
 
-output "project_id" {
-  value = module.project.project_id
-}
 
-output "monitor_project" {
-  value = [module.monitored_project_1.project_id, module.monitored_project_2.project_id]
-}
-
-output "sa_key" {
-  value     = google_service_account_key.int_test.private_key
-  sensitive = true
+module "metric_scope" {
+  source            = "../../../examples/metric_scope"
+  scoping_project   = var.project_id
+  monitored_project = var.monitor_project
 }
