@@ -12,6 +12,6 @@ This module is used add multiple projects as monitored project under a scoping p
 
 ## Outputs
 
-No outputs.
+No output.
 
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->

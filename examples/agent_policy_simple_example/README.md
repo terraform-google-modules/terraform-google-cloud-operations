@@ -11,7 +11,7 @@ This example illustrates how to use the `agent-policy` module.
 
 ## Outputs
 
-No outputs.
+No output.
 
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 

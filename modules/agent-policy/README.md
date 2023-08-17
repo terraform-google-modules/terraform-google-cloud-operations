@@ -92,7 +92,7 @@ Functional examples are included in the [examples](./../../examples) directory.
 
 ## Outputs
 
-No outputs.
+No output.
 
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 
