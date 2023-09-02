@@ -19,4 +19,12 @@ module "metric_scope" {
   source            = "../../../examples/metric_scope"
   scoping_project   = var.project_id
   monitored_project = var.monitor_project
+  group = [{
+    name   = "group-a"
+    filter = "resource.metadata.region= \"europe-west2\""
+    }, {
+    name        = "sub-group-a1"
+    parent_name = "group-a"
+    filter      = "resource.metadata.region= \"europe-west2\""
+  }]
 }

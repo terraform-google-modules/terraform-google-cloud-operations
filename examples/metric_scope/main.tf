@@ -18,4 +18,5 @@ module "metric-scope" {
   source            = "../../modules/metric-scope"
   scoping_project   = var.scoping_project
   monitored_project = var.monitored_project
+  group             = var.group
 }
