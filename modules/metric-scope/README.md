@@ -15,6 +15,9 @@ Groups and sub-groups name should be unique
 
 ## Outputs
 
-No outputs.
+| Name | Description |
+|------|-------------|
+| metric-scope-ids | ID's of the metric scope |
+| monitoring-groups | Monitoring group names |
 
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
