@@ -17,7 +17,7 @@ This example is specifically for testing update functionality.
 
 ## Outputs
 
-No output.
+No outputs.
 
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 
