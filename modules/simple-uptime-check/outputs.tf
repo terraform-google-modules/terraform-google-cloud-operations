@@ -26,5 +26,5 @@ output "alert_policy_id" {
 
 output "notification_channel_ids" {
   description = "The ids of the notification channels"
-  value       = values(google_monitoring_notification_channel.notification_channel).*.id
+  value       = values(google_monitoring_notification_channel.notification_channel)[*].id
 }
