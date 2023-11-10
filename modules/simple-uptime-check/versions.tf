@@ -25,6 +25,6 @@ terraform {
   }
 
   provider_meta "google" {
-    module_name = "blueprints/terraform/terraform-google-cloud-operations:simple-uptime-check/v0.3.0"
+    module_name = "blueprints/terraform/terraform-google-cloud-operations:simple-uptime-check/v0.4.0"
   }
 }
