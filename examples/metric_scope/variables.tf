@@ -14,21 +14,12 @@
  * limitations under the License.
  */
 
-variable "scoping_project" {
+variable "project_id" {
   type        = string
   description = "Scope Project"
 }
 
-variable "monitored_project" {
+variable "monitor_project" {
   type        = list(string)
   description = "List of Monitored project"
-}
-
-variable "group" {
-  type = list(object({
-    name        = string
-    parent_name = optional(string, null)
-    filter      = string
-    is_cluster  = optional(bool, false)
-  }))
 }

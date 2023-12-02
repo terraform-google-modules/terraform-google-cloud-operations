@@ -16,7 +16,14 @@
 
 module "metric-scope" {
   source            = "../../modules/metric-scope"
-  scoping_project   = var.scoping_project
-  monitored_project = var.monitored_project
-  group             = var.group
+  scoping_project   = var.project_id
+  monitored_project = var.monitor_project
+  group = [{
+    name   = "group-a"
+    filter = "resource.metadata.region= \"europe-west2\""
+    }, {
+    name        = "sub-group-a1"
+    parent_name = "group-a"
+    filter      = "resource.metadata.region= \"europe-west2\""
+  }]
 }

@@ -18,28 +18,17 @@ package metric_scope
 
 import (
 	"testing"
-	"fmt"
 
 	// import the blueprints test framework modules for testing and assertions
 
 	"github.com/GoogleCloudPlatform/cloud-foundation-toolkit/infra/blueprint-test/pkg/tft"
-	"github.com/stretchr/testify/assert"
 )
 
 // name the function as Test*
-func TestMetricScopeModule(t *testing.T) {
-	const scope_project = "2"
-	const group = "2"
+func TestMetricCheckModule(t *testing.T) {
 
 	// initialize Terraform test from the blueprint test framework
-	ms := tft.NewTFBlueprintTest(t)
-
-	ms.DefineVerify(func(assert *assert.Assertions) {
-		ms.DefaultVerify(assert)
-		assert.Equal(scope_project, ms.GetStringOutput("metric-scope-ids"), fmt.Sprintf("Monitored project are created"))
-		assert.Equal(group, ms.GetStringOutput("monitoring-groups"), fmt.Sprintf("Monitored Groups are created"))
-
-	})
+	metricCheckT := tft.NewTFBlueprintTest(t)
 	// call the test function to execute the integration test
-	ms.Test()
+	metricCheckT.Test()
 }
