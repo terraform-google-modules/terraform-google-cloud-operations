@@ -16,14 +16,14 @@
 
 locals {
   root_group        = [for val in var.group : val if val.parent_name == null]
-  sub_group_level_1 = setsubtract(distinct([for val in var.group : val.parent_name == null ? {} : contains(local.root_group.*.name, val.parent_name) ? val : {}]), [{}])
-  sub_group_level_2 = setsubtract(distinct([for val in var.group : val.parent_name == null ? {} : contains(local.sub_group_level_1.*.name, val.parent_name) ? val : {}]), [{}])
-  sub_group_level_3 = setsubtract(distinct([for val in var.group : val.parent_name == null ? {} : contains(local.sub_group_level_2.*.name, val.parent_name) ? val : {}]), [{}])
-  sub_group_level_4 = setsubtract(distinct([for val in var.group : val.parent_name == null ? {} : contains(local.sub_group_level_3.*.name, val.parent_name) ? val : {}]), [{}])
-  sub_group_level_5 = setsubtract(distinct([for val in var.group : val.parent_name == null ? {} : contains(local.sub_group_level_4.*.name, val.parent_name) ? val : {}]), [{}])
-  sub_group_level_6 = setsubtract(distinct([for val in var.group : val.parent_name == null ? {} : contains(local.sub_group_level_5.*.name, val.parent_name) ? val : {}]), [{}])
-  sub_group_level_7 = setsubtract(distinct([for val in var.group : val.parent_name == null ? {} : contains(local.sub_group_level_6.*.name, val.parent_name) ? val : {}]), [{}])
-  sub_group_level_8 = setsubtract(distinct([for val in var.group : val.parent_name == null ? {} : contains(local.sub_group_level_7.*.name, val.parent_name) ? val : {}]), [{}])
+  sub_group_level_1 = setsubtract(distinct([for val in var.group : val.parent_name == null ? {} : contains(local.root_group[*].name, val.parent_name) ? val : {}]), [{}])
+  sub_group_level_2 = setsubtract(distinct([for val in var.group : val.parent_name == null ? {} : contains(local.sub_group_level_1[*].name, val.parent_name) ? val : {}]), [{}])
+  sub_group_level_3 = setsubtract(distinct([for val in var.group : val.parent_name == null ? {} : contains(local.sub_group_level_2[*].name, val.parent_name) ? val : {}]), [{}])
+  sub_group_level_4 = setsubtract(distinct([for val in var.group : val.parent_name == null ? {} : contains(local.sub_group_level_3[*].name, val.parent_name) ? val : {}]), [{}])
+  sub_group_level_5 = setsubtract(distinct([for val in var.group : val.parent_name == null ? {} : contains(local.sub_group_level_4[*].name, val.parent_name) ? val : {}]), [{}])
+  sub_group_level_6 = setsubtract(distinct([for val in var.group : val.parent_name == null ? {} : contains(local.sub_group_level_5[*].name, val.parent_name) ? val : {}]), [{}])
+  sub_group_level_7 = setsubtract(distinct([for val in var.group : val.parent_name == null ? {} : contains(local.sub_group_level_6[*].name, val.parent_name) ? val : {}]), [{}])
+  sub_group_level_8 = setsubtract(distinct([for val in var.group : val.parent_name == null ? {} : contains(local.sub_group_level_7[*].name, val.parent_name) ? val : {}]), [{}])
 }
 
 #attach project to scoping project
