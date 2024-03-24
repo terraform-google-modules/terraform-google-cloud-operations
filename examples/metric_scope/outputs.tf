@@ -14,15 +14,11 @@
  * limitations under the License.
  */
 
-output "project_id" {
-  value = module.project.project_id
+output "metric-scope-ids" {
+  value       = module.metric-scope.metric-scope-ids
+  description = "ID's of the metric scope"
 }
-
-output "monitor_project" {
-  value = [module.monitored_project_1.project_id, module.monitored_project_2.project_id]
-}
-
-output "sa_key" {
-  value     = google_service_account_key.int_test.private_key
-  sensitive = true
+output "monitoring-groups" {
+  value       = module.metric-scope.monitoring-groups
+  description = "Monitoring group names"
 }

@@ -36,3 +36,41 @@ module "project" {
     "osconfig.googleapis.com"
   ]
 }
+
+module "monitored_project_1" {
+  source  = "terraform-google-modules/project-factory/google"
+  version = "~> 14.0"
+
+  name              = "monitor-1"
+  random_project_id = "true"
+  org_id            = var.org_id
+  folder_id         = var.folder_id
+  billing_account   = var.billing_account
+
+  activate_apis = [
+    "cloudresourcemanager.googleapis.com",
+    "serviceusage.googleapis.com",
+    "logging.googleapis.com",
+    "monitoring.googleapis.com",
+    "osconfig.googleapis.com"
+  ]
+}
+
+module "monitored_project_2" {
+  source  = "terraform-google-modules/project-factory/google"
+  version = "~> 14.0"
+
+  name              = "monitor-2"
+  random_project_id = "true"
+  org_id            = var.org_id
+  folder_id         = var.folder_id
+  billing_account   = var.billing_account
+
+  activate_apis = [
+    "cloudresourcemanager.googleapis.com",
+    "serviceusage.googleapis.com",
+    "logging.googleapis.com",
+    "monitoring.googleapis.com",
+    "osconfig.googleapis.com"
+  ]
+}

@@ -1,5 +1,5 @@
 /**
- * Copyright 2019 Google LLC
+ * Copyright 2023 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,15 +14,21 @@
  * limitations under the License.
  */
 
-output "project_id" {
-  value = module.project.project_id
-}
+package metric_scope
 
-output "monitor_project" {
-  value = [module.monitored_project_1.project_id, module.monitored_project_2.project_id]
-}
+import (
+	"testing"
 
-output "sa_key" {
-  value     = google_service_account_key.int_test.private_key
-  sensitive = true
+	// import the blueprints test framework modules for testing and assertions
+
+	"github.com/GoogleCloudPlatform/cloud-foundation-toolkit/infra/blueprint-test/pkg/tft"
+)
+
+// name the function as Test*
+func TestMetricCheckModule(t *testing.T) {
+
+	// initialize Terraform test from the blueprint test framework
+	metricCheckT := tft.NewTFBlueprintTest(t)
+	// call the test function to execute the integration test
+	metricCheckT.Test()
 }
