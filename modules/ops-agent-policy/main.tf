@@ -15,7 +15,7 @@
  */
 
 locals {
-  is_install = var.ops_agent.package_state == "INSTALLED" 
+  is_install = var.ops_agent.package_state == "installed" 
   is_pin_to_version = length(regexall("2\\.\\d+\\.\\d+", var.ops_agent.version)) > 0
   file_path = (local.is_install && local.is_pin_to_version ? "pin_to_version_install/policy_pin_to_version_install.yaml" : (
                local.is_install ? "major_version_install/policy_major_version_install.yaml" : (

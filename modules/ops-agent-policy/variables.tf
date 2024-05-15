@@ -26,21 +26,21 @@ variable "assignment_id" {
 variable "zone" {
   description = "The location to which policy assignments are applied to."
   type        = string
-  default = "us-central1-a"
 }
 
 variable "project" {
   description = "The ID of the project in which to provision resources."
   type        = string
+  default     = null
 }
 
 variable "ops_agent" {
   description = "Whether to install or uninstall the agent, and which version to install."
   type        = object({package_state: string, version: string})
-  default     = {package_state: "INSTALLED", version: "latest"}
+  default     = {package_state: "installed", version: "latest"}
   validation {
-    condition     = contains(["INSTALLED", "REMOVED"], var.ops_agent.package_state)
-    error_message = "ops_agent.package_state must be one of INSTALLED|REMOVED"
+    condition     = contains(["installed", "removed"], var.ops_agent.package_state)
+    error_message = "ops_agent.package_state must be one of installed|removed"
   }
   validation {
     condition     = (var.ops_agent.version == "latest" ||
@@ -51,7 +51,7 @@ variable "ops_agent" {
 }
 
 variable "instance_filter" {
-  description = "The ID of the project in which to provision resources."
+  description = "Filter to select VMs. Structure is documented below here: https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/os_config_os_policy_assignment."
   type        = object({
     all: optional(bool),
     exclusion_labels: optional(list(object({
@@ -65,7 +65,4 @@ variable "instance_filter" {
       os_version: string
     })), []),
   })
-  default = {
-    all = true
-  }
 }
