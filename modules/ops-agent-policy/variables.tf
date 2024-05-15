@@ -29,7 +29,7 @@ variable "zone" {
 }
 
 variable "project" {
-  description = "The ID of the project in which to provision resources."
+  description = "The ID of the project in which to provision resources. If not present, uses the provider ID"
   type        = string
   default     = null
 }
