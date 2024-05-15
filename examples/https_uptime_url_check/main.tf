@@ -15,7 +15,8 @@
  */
 
 module "uptime-check" {
-  source = "./../../modules/simple-uptime-check"
+  source  = "terraform-google-modules/cloud-operations/google//modules/simple-uptime-check"
+  version = "~> 0.4"
 
   project_id                = var.project_id
   uptime_check_display_name = var.uptime_check_display_name
