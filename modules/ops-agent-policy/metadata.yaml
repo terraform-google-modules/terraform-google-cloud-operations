@@ -27,12 +27,12 @@ spec:
     type: Terraform
     version: '>= 0.13'
   examples:
-  - name: agent_policy_detailed_example
-    location: examples/agent_policy_detailed_example
-  - name: agent_policy_simple_example
-    location: examples/agent_policy_simple_example
-  - name: agent_policy_update_example
-    location: examples/agent_policy_update_example
+  - name: ops_agent_policy_install_all
+    location: examples/ops_agent_policy_install_all
+  - name: ops_agent_policy_install_all_in_region
+    location: examples/ops_agent_policy_install_all_in_region
+  - name: ops_agent_policy_install_all_in_zone
+    location: examples/ops_agent_policy_install_all_in_zone
   variables:
   - name: assignment_id
     description: Resource name. Unique among policy assignments in the given zone
@@ -71,7 +71,7 @@ spec:
   - level: Project
     roles:
     - roles/owner
-    - roles/osconfig.guestPolicyAdmin
+    - roles/osconfig.osPolicyAssignmentAdmin
     - roles/monitoring.metricWriter
     - roles/logging.logWriter
   services:
