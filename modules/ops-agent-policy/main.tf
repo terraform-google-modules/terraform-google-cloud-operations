@@ -263,7 +263,7 @@ resource "google_os_config_os_policy_assignment" "ops_agent_policy" {
                     }
                     
                   }
-                  script = try(exec.value.validate.file, null)
+                  script = try(exec.value.validate.script, null)
                   args = try(exec.value.validate.args, null)
                   interpreter = exec.value.validate.interpreter
                   output_file_path = try(exec.value.validate.outputFilePath, null)
