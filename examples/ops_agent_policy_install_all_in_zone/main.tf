@@ -20,7 +20,7 @@ provider "google" {
 
 module "ops_agent_policy" {
   source      = "./../../modules/ops-agent-policy"
-  assignment_id = "ops_agent_policy_all_in_${var.zone}"
+  assignment_id = "ops_agent_policy_all_in_${replace(var.zone, "-", "_")}"
   zone = var.zone
   instance_filter = {all=true}
 }
