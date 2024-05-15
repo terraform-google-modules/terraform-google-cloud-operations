@@ -165,7 +165,7 @@ resource "google_os_config_os_policy_assignment" "ops_agent_policy" {
 
 
                 dynamic "msi" {
-                  for_each = try(pkg.value.rpm[*], [])
+                  for_each = try(pkg.value.msi[*], [])
                   content {
                     source {
                       dynamic "remote" {
