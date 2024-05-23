@@ -36,33 +36,33 @@ variable "project" {
 
 variable "ops_agent" {
   description = "Whether to install or uninstall the agent, and which version to install."
-  type        = object({package_state: string, version: string})
-  default     = {package_state: "installed", version: "latest"}
+  type        = object({ package_state : string, version : string })
+  default     = { package_state : "installed", version : "latest" }
   validation {
     condition     = contains(["installed", "removed"], var.ops_agent.package_state)
     error_message = "ops_agent.package_state must be one of installed|removed"
   }
   validation {
-    condition     = (var.ops_agent.version == "latest" ||
-                     length(regexall("2\\.\\d+\\.\\d+", var.ops_agent.version)) > 0 ||
-                     var.ops_agent.version == "2.*.*")
+    condition = (var.ops_agent.version == "latest" ||
+      length(regexall("2\\.\\d+\\.\\d+", var.ops_agent.version)) > 0 ||
+    var.ops_agent.version == "2.*.*")
     error_message = "ops_agent.version match one of 'latest', r'2\\.\\d\\.\\d', '2.*.*"
   }
 }
 
 variable "instance_filter" {
   description = "Filter to select VMs. Structure is documented below here: https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/os_config_os_policy_assignment."
-  type        = object({
-    all: optional(bool),
-    exclusion_labels: optional(list(object({
-      labels: map(string)
+  type = object({
+    all : optional(bool),
+    exclusion_labels : optional(list(object({
+      labels : map(string)
     })), []),
-    inclusion_labels: optional(list(object({
-      labels: map(string)
+    inclusion_labels : optional(list(object({
+      labels : map(string)
     })), []),
-    inventories: optional(list(object({
-      os_short_name: string,
-      os_version: string
+    inventories : optional(list(object({
+      os_short_name : string,
+      os_version : string
     })), []),
   })
 }
