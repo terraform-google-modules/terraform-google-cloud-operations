@@ -8,7 +8,6 @@ This example illustrates how to use the `ops-agent-policy` module to install the
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
 | project\_id | The ID of the project in which to provision resources. | `string` | n/a | yes |
-| zone | The zone in which to install the ops agent. | `string` | n/a | yes |
 
 ## Outputs
 
