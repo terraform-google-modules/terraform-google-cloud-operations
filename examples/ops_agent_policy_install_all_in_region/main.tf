@@ -24,7 +24,7 @@ data "google_compute_zones" "available" {
 
 module "ops_agent_policy" {
   for_each        = toset(data.google_compute_zones.available.names)
-  source          = "hsmatulisgoogle/cloud-operations/google//modules/ops-agent-policy"
+  source          = "../../modules/ops-agent-policy"
   assignment_id   = "ops-agent-policy-all-in-${each.key}"
   zone            = each.key
   instance_filter = { all = true }

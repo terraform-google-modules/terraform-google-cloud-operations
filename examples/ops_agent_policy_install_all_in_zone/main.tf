@@ -19,7 +19,7 @@ provider "google" {
 }
 
 module "ops_agent_policy" {
-  source          = "hsmatulisgoogle/cloud-operations/google//modules/ops-agent-policy"
+  source          = "../../modules/ops-agent-policy"
   assignment_id   = "ops-agent-policy-all-in-${var.zone}"
   zone            = var.zone
   instance_filter = { all = true }
