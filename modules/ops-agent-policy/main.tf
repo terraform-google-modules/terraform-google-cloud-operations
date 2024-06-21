@@ -21,7 +21,7 @@ locals {
     local.is_install ? "major_version_install/policy_major_version_install.yaml" : (
   "uninstall/policy_uninstall.yaml")))
   file        = file("${path.module}/${local.file_path}")
-  repo_suffix = replace(var.ops_agent.version, ".*.*", "")
+  repo_suffix = replace(replace(var.ops_agent.version, ".*.*", ""), "latest", "all")
   os_policies = yamldecode(replace(local.file, "$agent_version", local.repo_suffix))
 }
 
