@@ -15,7 +15,7 @@
  */
 
 locals {
-  is_installed        = var.agents_rule.package_state == "installed"
+  is_installed          = var.agents_rule.package_state == "installed"
   is_pinnned_to_version = length(regexall("2\\.\\d+\\.\\d+", var.agents_rule.version)) > 0
   file_path = (local.is_installed && local.is_pinnned_to_version ? "pin_to_version_install/policy_pin_to_version_install.yaml" : (
     local.is_installed ? "major_version_install/policy_major_version_install.yaml" : (
@@ -340,7 +340,7 @@ resource "google_os_config_os_policy_assignment" "ops_agent_policy" {
     }
     min_wait_duration = "3s"
   }
-  description = "AUTO-GENERATED VALUE BY TERRAFORM, DO NOT EDIT! Enforces Ops Agent installation state."
+  description        = "AUTO-GENERATED VALUE BY TERRAFORM, DO NOT EDIT! Enforces Ops Agent installation state."
   project            = var.project
   skip_await_rollout = true
 }
