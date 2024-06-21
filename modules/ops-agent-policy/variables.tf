@@ -60,12 +60,15 @@ variable "instance_filter" {
   description = "Filter to select VMs. Structure is documented below here: https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/os_config_os_policy_assignment."
   type = object({
     all : optional(bool),
+    // excludes a VM if it contains all label-value pairs for some element in the list
     exclusion_labels : optional(list(object({
       labels : map(string)
     })), []),
+    // includes a VM if it contains all label-value pairs for some element in the list
     inclusion_labels : optional(list(object({
       labels : map(string)
     })), []),
+    // includes a VM if its inventory data matches at least one of the following inventories
     inventories : optional(list(object({
       os_short_name : string,
       os_version : string
