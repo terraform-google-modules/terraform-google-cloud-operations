@@ -48,11 +48,8 @@ resource "google_os_config_os_policy_assignment" "ops_agent_policy" {
       }
     }
   }
-
   location = var.zone
   name     = var.assignment_id
-
-
   os_policies {
     id                            = local.os_policies.id
     mode                          = local.os_policies.mode
