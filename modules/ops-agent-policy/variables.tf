@@ -40,19 +40,19 @@ variable "project" {
   default     = null
 }
 
-variable "ops_agent" {
+variable "agents_rule" {
   description = "Whether to install or uninstall the agent, and which version to install."
   type        = object({ package_state : string, version : string })
   default     = { package_state : "installed", version : "latest" }
   validation {
-    condition     = contains(["installed", "removed"], var.ops_agent.package_state)
-    error_message = "ops_agent.package_state must be one of installed|removed"
+    condition     = contains(["installed", "removed"], var.agents_rule.package_state)
+    error_message = "agents_rule.package_state must be one of installed|removed"
   }
   validation {
-    condition = (var.ops_agent.version == "latest" ||
-      length(regexall("2\\.\\d+\\.\\d+", var.ops_agent.version)) > 0 ||
-    var.ops_agent.version == "2.*.*")
-    error_message = "ops_agent.version match one of 'latest', r'2\\.\\d\\.\\d', '2.*.*"
+    condition = (var.agents_rule.version == "latest" ||
+      length(regexall("2\\.\\d+\\.\\d+", var.agents_rule.version)) > 0 ||
+    var.agents_rule.version == "2.*.*")
+    error_message = "agents_rule.version match one of 'latest', r'2\\.\\d\\.\\d', '2.*.*"
   }
 }
 

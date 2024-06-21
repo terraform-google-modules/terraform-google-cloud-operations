@@ -15,13 +15,13 @@
  */
 
 locals {
-  is_installed        = var.ops_agent.package_state == "installed"
-  is_pinnned_to_version = length(regexall("2\\.\\d+\\.\\d+", var.ops_agent.version)) > 0
+  is_installed        = var.agents_rule.package_state == "installed"
+  is_pinnned_to_version = length(regexall("2\\.\\d+\\.\\d+", var.agents_rule.version)) > 0
   file_path = (local.is_installed && local.is_pinnned_to_version ? "pin_to_version_install/policy_pin_to_version_install.yaml" : (
     local.is_installed ? "major_version_install/policy_major_version_install.yaml" : (
   "uninstall/policy_uninstall.yaml")))
   file        = file("${path.module}/${local.file_path}")
-  repo_suffix = replace(replace(var.ops_agent.version, ".*.*", ""), "latest", "all")
+  repo_suffix = replace(replace(var.agents_rule.version, ".*.*", ""), "latest", "all")
   os_policies = yamldecode(replace(local.file, "$agent_version", local.repo_suffix))
 }
 
