@@ -26,7 +26,6 @@ locals {
 }
 
 resource "google_os_config_os_policy_assignment" "ops_agent_policy" {
-
   instance_filter {
     all = var.instance_filter.all
     dynamic "exclusion_labels" {
@@ -269,8 +268,6 @@ resource "google_os_config_os_policy_assignment" "ops_agent_policy" {
                   output_file_path = try(exec.value.validate.outputFilePath, null)
 
                 }
-
-
                 dynamic "enforce" {
                   for_each = try(exec.value.enforce[*], [])
                   content {
@@ -283,7 +280,6 @@ resource "google_os_config_os_policy_assignment" "ops_agent_policy" {
                             uri             = remote.value.uri
                             sha256_checksum = try(remote.value.sha256Checksum, null)
                           }
-
                         }
                         dynamic "gcs" {
                           for_each = try(file.value.gcs[*], [])
@@ -297,24 +293,20 @@ resource "google_os_config_os_policy_assignment" "ops_agent_policy" {
                         allow_insecure = try(file.value.allowInsecure, null)
 
                       }
-
                     }
                     script           = try(enforce.value.script, null)
                     args             = try(enforce.value.args, null)
                     interpreter      = enforce.value.interpreter
                     output_file_path = try(enforce.value.outputFilePath, null)
-
                   }
                 }
               }
             }
             dynamic "file" {
               for_each = try(resources.value.file[*], [])
-
               content {
                 dynamic "file" {
                   for_each = try(file.value.file, [])
-
                   content {
                     dynamic "remote" {
                       for_each = try(file.value.remote[*], [])
@@ -334,32 +326,24 @@ resource "google_os_config_os_policy_assignment" "ops_agent_policy" {
                     local_path     = try(file.value.localPath, null)
                     allow_insecure = try(file.value.allowInsecure, null)
                   }
-
-
                 }
                 content = try(file.value.content, null)
                 path    = file.value.path
                 state   = file.value.state
               }
-
             }
           }
         }
       }
     }
   }
-
-
   rollout {
     disruption_budget {
       percent = 10
     }
-
     min_wait_duration = "3s"
   }
-
   description = "AUTO-GENERATED VALUE BY TERRAFORM, DO NOT EDIT! Enforces Ops Agent installation state."
-
   project            = var.project
   skip_await_rollout = true
 }
