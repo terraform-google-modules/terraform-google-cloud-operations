@@ -26,6 +26,12 @@ variable "assignment_id" {
 variable "zone" {
   description = "The location to which policy assignments are applied to."
   type        = string
+  // Better error message when giving regions instead of zones,
+  // more validation is done by the underlying API
+  validation {
+    condition     = length(regexall(".*-.*-.*", var.zone)) > 0
+    error_message = "Expected a valid GCP zone"
+  }
 }
 
 variable "project" {
