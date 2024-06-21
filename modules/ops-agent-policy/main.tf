@@ -340,7 +340,7 @@ resource "google_os_config_os_policy_assignment" "ops_agent_policy" {
     }
     min_wait_duration = "3s"
   }
-  description        = "AUTO-GENERATED VALUE BY TERRAFORM, DO NOT EDIT! Enforces Ops Agent installation state."
+  description        = "AUTO-GENERATED VALUE BY TERRAFORM, DO NOT EDIT! | {\"packageState\":\"${var.agents_rule.package_state}\",\"version\":\"${var.agents_rule.version}\"}'"
   project            = var.project
   skip_await_rollout = true
 }
