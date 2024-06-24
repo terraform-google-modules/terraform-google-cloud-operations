@@ -8,6 +8,13 @@ and this project adheres to
 [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 This changelog is generated automatically based on [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/).
 
+## [0.5.0](https://github.com/terraform-google-modules/terraform-google-cloud-operations/compare/v0.4.0...v0.5.0) (2024-06-24)
+
+
+### Features
+
+* Implement new Ops agent policy module ([#101](https://github.com/terraform-google-modules/terraform-google-cloud-operations/issues/101)) ([a6598c3](https://github.com/terraform-google-modules/terraform-google-cloud-operations/commit/a6598c363ae6d446e732c9cf4762143ce16165a3))
+
 ## [0.4.0](https://github.com/terraform-google-modules/terraform-google-cloud-operations/compare/v0.3.0...v0.4.0) (2023-11-09)
 
 
