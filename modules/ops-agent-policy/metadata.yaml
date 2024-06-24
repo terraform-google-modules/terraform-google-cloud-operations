@@ -1,0 +1,82 @@
+# Copyright 2024 Google LLC
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#      http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+apiVersion: blueprints.cloud.google.com/v1alpha1
+kind: BlueprintMetadata
+metadata:
+  name: terraform-google-cloud-operations
+  annotations:
+    config.kubernetes.io/local-config: "true"
+spec:
+  title: Agent Policy
+  source:
+    repo: https://github.com/terraform-google-modules/terraform-google-cloud-operations.git
+    sourceType: git
+  actuationTool:
+    type: Terraform
+    version: '>= 0.13'
+  examples:
+  - name: ops_agent_policy_install_all
+    location: examples/ops_agent_policy_install_all
+  - name: ops_agent_policy_install_all_in_region
+    location: examples/ops_agent_policy_install_all_in_region
+  - name: ops_agent_policy_install_all_in_zone
+    location: examples/ops_agent_policy_install_all_in_zone
+  variables:
+  - name: assignment_id
+    description: Resource name. Unique among policy assignments in the given zone
+    type: string
+    required: true
+  - name: zone
+    description: The location to which policy assignments are applied to.
+    type: string
+    required: true
+  - name: project
+    description: The ID of the project in which to provision resources. If not present, uses the provider ID
+    type: string
+    required: false
+  - name: ops_agent
+    description: Whether to install or uninstall the agent, and which version to install.
+    type: "object({package_state: string, version: string})"
+    required: false
+  - name: instance_filter
+    description: "Filter to select VMs. Structure is documented below here: https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/os_config_os_policy_assignment"
+    type: '''object({
+    all: optional(bool),
+    exclusion_labels: optional(list(object({
+      labels: map(string)
+    })), []),
+    inclusion_labels: optional(list(object({
+      labels: map(string)
+    })), []),
+    inventories: optional(list(object({
+      os_short_name: string,
+      os_version: string
+    })), []),
+  })'''
+    required: true
+
+  roles:
+  - level: Project
+    roles:
+    - roles/owner
+    - roles/osconfig.osPolicyAssignmentAdmin
+    - roles/monitoring.metricWriter
+    - roles/logging.logWriter
+  services:
+  - cloudresourcemanager.googleapis.com
+  - serviceusage.googleapis.com
+  - logging.googleapis.com
+  - monitoring.googleapis.com
+  - osconfig.googleapis.com
