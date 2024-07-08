@@ -54,7 +54,7 @@ resource "google_os_config_os_policy_assignment" "ops_agent_policy" {
     id                            = local.os_policies.id
     mode                          = local.os_policies.mode
     allow_no_resource_group_match = local.os_policies.allowNoResourceGroupMatch
-    description                   = "AUTO-GENERATED VALUE BY TERRAFORM, DO NOT EDIT! Enforces Ops Agent installation state."
+    description                   = "AUTO-GENERATED VALUE, DO NOT EDIT! | {\"packageState\":\"${var.agents_rule.package_state}\",\"version\":\"${var.agents_rule.version}\"}"
 
     dynamic "resource_groups" {
       for_each = local.os_policies.resourceGroups
@@ -340,7 +340,7 @@ resource "google_os_config_os_policy_assignment" "ops_agent_policy" {
     }
     min_wait_duration = "3s"
   }
-  description        = "AUTO-GENERATED VALUE BY TERRAFORM, DO NOT EDIT! | {\"packageState\":\"${var.agents_rule.package_state}\",\"version\":\"${var.agents_rule.version}\"}'"
+  description        = "Cloud Ops Policy Assignment via Terraform"
   project            = var.project
   skip_await_rollout = true
 }
