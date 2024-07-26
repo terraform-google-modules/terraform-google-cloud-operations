@@ -199,7 +199,7 @@ resource "google_os_config_os_policy_assignment" "ops_agent_policy" {
                     uri          = apt.value.uri
                     distribution = apt.value.distribution
                     components   = apt.value.components
-                    gpg_key      = try(apt.value.gpg_key, null)
+                    gpg_key      = try(apt.value.gpgKey, null)
                   }
                 }
                 dynamic "yum" {
