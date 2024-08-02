@@ -8,6 +8,13 @@ and this project adheres to
 [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 This changelog is generated automatically based on [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/).
 
+## [0.5.1](https://github.com/terraform-google-modules/terraform-google-cloud-operations/compare/v0.5.0...v0.5.1) (2024-08-02)
+
+
+### Bug Fixes
+
+* disable gradual rollout ([#112](https://github.com/terraform-google-modules/terraform-google-cloud-operations/issues/112)) ([6adc018](https://github.com/terraform-google-modules/terraform-google-cloud-operations/commit/6adc01845cf2bd98ae440c15fae5fef62138a90d))
+
 ## [0.5.0](https://github.com/terraform-google-modules/terraform-google-cloud-operations/compare/v0.4.0...v0.5.0) (2024-06-24)
 
 
