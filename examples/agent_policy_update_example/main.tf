@@ -16,7 +16,7 @@
 
 module "agent_policy_update" {
   source  = "terraform-google-modules/cloud-operations/google//modules/agent-policy"
-  version = "~> 0.4"
+  version = "~> 0.5"
 
   project_id   = var.project_id
   policy_id    = "ops-agents-test-policy-update"
