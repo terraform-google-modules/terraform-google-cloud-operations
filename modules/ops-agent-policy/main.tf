@@ -336,9 +336,9 @@ resource "google_os_config_os_policy_assignment" "ops_agent_policy" {
   }
   rollout {
     disruption_budget {
-      percent = 10
+      percent = 100
     }
-    min_wait_duration = "3s"
+    min_wait_duration = "0s"
   }
   description        = "Cloud Ops Policy Assignment via Terraform"
   project            = var.project
