@@ -8,6 +8,13 @@ and this project adheres to
 [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 This changelog is generated automatically based on [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/).
 
+## [0.6.0](https://github.com/terraform-google-modules/terraform-google-cloud-operations/compare/v0.5.1...v0.6.0) (2024-08-29)
+
+
+### Features
+
+* **deps:** Update Terraform google to v6 ([#115](https://github.com/terraform-google-modules/terraform-google-cloud-operations/issues/115)) ([67b962c](https://github.com/terraform-google-modules/terraform-google-cloud-operations/commit/67b962c8420c3a5dc9b73358ead1ff86b7688d7f))
+
 ## [0.5.1](https://github.com/terraform-google-modules/terraform-google-cloud-operations/compare/v0.5.0...v0.5.1) (2024-08-02)
 
 
