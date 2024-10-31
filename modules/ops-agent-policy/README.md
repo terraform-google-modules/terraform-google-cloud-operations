@@ -1,10 +1,38 @@
 # Agent Policy
 
-This module is used to install/uninstall the ops agent in GCE.
+This module is used to install/uninstall the ops agent in Google Cloud Engine VM's using [ops agent policies](https://cloud.google.com/stackdriver/docs/solutions/agents/ops-agent/agent-policies).
 
 ## Usage
 
-Functional examples are included in the [examples](./../../examples) directory.
+Basic usage of this module is as follows:
+
+Sample module to install [Ops Agent](https://cloud.google.com/stackdriver/docs/solutions/ops-agent) on all Debian 12 VMs with the label "goog-ops-agent-policy=enabled".
+```hcl
+module "ops_agent_policy" {
+  source          = "github.com/terraform-google-modules/terraform-google-cloud-operations/modules/ops-agent-policy"
+  project         = "<PROJECT ID>"
+  zone            = "<ZONE>"
+  assignment_id   = "example-ops-agent-policy"
+  agents_rule = {
+    package_state = "installed"
+    version = "latest"
+  }
+  instance_filter = {
+    all = false
+    inventories = [{
+      os_short_name = "debian"
+      os_version = "12"
+    }]
+    inclusion_labels = [{
+      labels = {
+        goog-ops-agent-policy = "enabled"
+      }
+    }]
+  }
+}
+```
+
+Functional examples are included in the [examples](./../../examples) directory with the prefix `ops_agent_policy`.
 
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 ## Inputs
