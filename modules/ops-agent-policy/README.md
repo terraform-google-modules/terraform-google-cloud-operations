@@ -1,6 +1,6 @@
 # Agent Policy
 
-This module is used to install/uninstall the ops agent in GCE.
+This module is used to install/uninstall the ops agent in Google Cloud Engine VM's using [ops agent policies](https://cloud.google.com/stackdriver/docs/solutions/agents/ops-agent/agent-policies).
 
 ## Usage
 
@@ -32,7 +32,7 @@ module "ops_agent_policy" {
 }
 ```
 
-Functional examples are included in the [examples](./../../examples) directory.
+Functional examples are included in the [examples](./../../examples) directory with the prefix `ops_agent_policy`.
 
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 ## Inputs

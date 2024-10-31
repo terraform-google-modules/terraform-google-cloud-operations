@@ -1,6 +1,6 @@
 # Ops Agent Policy Example
 
-This example illustrates how to use the `ops-agent-policy` module to install the ops agent on all VMs in a zone.
+This example illustrates how to use the `ops-agent-policy` module to install the ops agent on all VMs in a region.
 
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 ## Inputs
