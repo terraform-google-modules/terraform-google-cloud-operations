@@ -52,3 +52,7 @@ Functional examples are included in the [examples](./../../examples) directory w
 | ops\_agent\_policy | The generated policy for installing/uninstalling the ops agent. |
 
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
+
+## Troubleshooting
+
+The [GA agent policies public documentation](https://cloud.google.com/logging/docs/agent/ops-agent/agent-policies#troubleshooting) shows different errors that can appear while creating policies using the ops-agent-policy module.
