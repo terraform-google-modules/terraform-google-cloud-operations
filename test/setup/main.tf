@@ -20,7 +20,7 @@ provider "google-beta" {}
 
 module "project" {
   source  = "terraform-google-modules/project-factory/google"
-  version = "~> 17.0"
+  version = "~> 18.0"
 
   name              = "ci-cloud-operations"
   random_project_id = "true"
