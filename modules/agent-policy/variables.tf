@@ -52,12 +52,10 @@ variable "group_labels" {
 
 variable "os_types" {
   description = "A list of OS types to filter instances to apply the policy."
-  type        = list(any)
-
-  validation {
-    condition     = can([for os_type in var.os_types : os_type["short_name"]])
-    error_message = "Each os type must have a short_name."
-  }
+  type = list(object({
+    short_name = string
+    version    = string
+  }))
 }
 
 variable "zones" {
