@@ -85,7 +85,7 @@ Functional examples are included in the [examples](./../../examples) directory.
 | description | The description of the policy. | `string` | `null` | no |
 | group\_labels | A list of label maps to filter instances to apply policies on. | `list(map(string))` | `null` | no |
 | instances | A list of instances to filter instances to apply the policy. | `list(string)` | `null` | no |
-| os\_types | A list of OS types to filter instances to apply the policy. | `list(any)` | n/a | yes |
+| os\_types | A list of OS types to filter instances to apply the policy. | <pre>list(object({<br>    short_name = string<br>    version    = string<br>  }))</pre> | n/a | yes |
 | policy\_id | The ID of the policy. | `string` | n/a | yes |
 | project\_id | The ID of the project in which to provision resources. | `string` | n/a | yes |
 | zones | A list of zones to filter instances to apply the policy. | `list(string)` | `null` | no |
