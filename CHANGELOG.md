@@ -8,6 +8,19 @@ and this project adheres to
 [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 This changelog is generated automatically based on [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/).
 
+## [0.7.0](https://github.com/terraform-google-modules/terraform-google-cloud-operations/compare/v0.6.0...v0.7.0) (2026-05-14)
+
+
+### Features
+
+* **deps:** Update Terraform google to v7 ([#138](https://github.com/terraform-google-modules/terraform-google-cloud-operations/issues/138)) ([0305d8c](https://github.com/terraform-google-modules/terraform-google-cloud-operations/commit/0305d8cea46118fd6374b0c2e62e6673102910c8))
+
+
+### Bug Fixes
+
+* **deps:** bump TF min to v1.3 ([#150](https://github.com/terraform-google-modules/terraform-google-cloud-operations/issues/150)) ([e20c9c9](https://github.com/terraform-google-modules/terraform-google-cloud-operations/commit/e20c9c910904bfa462f13d96655dfef9a1de4474))
+* **deps:** Update Terraform terraform-google-modules/gcloud/google to v4 ([#141](https://github.com/terraform-google-modules/terraform-google-cloud-operations/issues/141)) ([aa70304](https://github.com/terraform-google-modules/terraform-google-cloud-operations/commit/aa703048fd67db7dc7919d97c2db36e32a105d50))
+
 ## [0.6.0](https://github.com/terraform-google-modules/terraform-google-cloud-operations/compare/v0.5.1...v0.6.0) (2024-08-29)
 
 
